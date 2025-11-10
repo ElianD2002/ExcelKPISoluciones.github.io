@@ -1,15 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Manejo del formulario de contacto
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por tu mensaje! Nos pondremos en contacto pronto.');
-            this.reset();
-        });
-    }
-
+    
+    
     // Scroll suave para navegación
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -139,3 +131,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
