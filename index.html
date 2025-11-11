@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel KPI Soluciones | Dashboards en Excel a la Medida | EKS</title>
-    <meta name="description" content="Dashboards en Excel a la medida para ventas, logística, y KPIs. Transforma tus datos en decisiones automáticas y estratégicas.">
+    <title>Excel KPI Soluciones (EKS) - Dashboards y Análisis de Datos</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
+    <!-- Header -->
+<header>
     <div class="container header-container">
         <div class="logo-container">
             <img src="imagenes/Logo EKS completo son fondo.png" alt="Logo EKS" class="logo-horizontal"/>
         </div>
 
+        <!-- Menú hamburguesa (solo móvil) -->
         <button class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
+        <!-- Menú - IMPORTANTE: Agregar id="menu" -->
         <ul class="menu" id="menu">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
@@ -35,7 +37,7 @@
 </header>
 
 
-   <!-- Hero Section -->
+    <!-- Hero Section -->
     <section id="inicio" class="hero"> 
     <div class="container hero-content">
         <h1>Transformamos tus datos en decisiones inteligentes.</h1>
@@ -50,6 +52,8 @@
     </div>
 </section>
 
+
+    <!-- Qué Hacemos / Propuesta de Valor -->
     <section id="servicios" class="valor">
         <div class="container">
             <h2>Qué Hacemos</h2>
@@ -110,6 +114,7 @@
         </div>
     </section>
 
+    <!-- Por Qué Elegirnos -->
     <section class="elegirnos">
         <div class="container">
             <h2>Por Qué Elegirnos</h2>
@@ -126,22 +131,27 @@
                     <p>Dashboards automatizados que conectan tus datos, procesan la información y la muestran en reportes visuales listos para decidir.</p>
                 <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 340px;">
 
+    <!-- DATOS RAW -->
     <rect x="10" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
     <text x="60" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
         <tspan x="60" dy="0">DATOS</tspan>
         <tspan x="60" dy="18">RAW</tspan>
     </text>
     
+    <!-- Flecha 1 -->
     <polyline points="110,50 130,50" fill="none" stroke="#00a859" stroke-width="3" marker-end="url(#arrowhead)"/>
     
+    <!-- PROCESAR DATOS -->
     <rect x="130" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
     <text x="180" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
         <tspan x="180" dy="0">PROCESAR</tspan>
         <tspan x="180" dy="18">DATOS</tspan>
     </text>
     
+    <!-- Flecha 2 -->
     <polyline points="230,50 250,50" fill="none" stroke="#00a859" stroke-width="3" marker-end="url(#arrowhead)"/>
     
+    <!-- DECISIÓN INTELIGENTE -->
     <rect x="250" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
     <text x="300" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
         <tspan x="300" dy="0">DECISIÓN</tspan>
@@ -165,13 +175,14 @@
         </div>
     </section>
 
-   <section id="portafolio" class="portafolio">
+   <!-- Portafolio de Soluciones -->
+<section id="portafolio" class="portafolio">
     <div class="container">
         <h2>Portafolio de Soluciones</h2>
         <div class="portafolio-grid">
             
             <div class="portafolio-item"
-                 data-gallery="imagenes/Dashboard de mantenimiento de flota.jpg, imagenes/Dashboard de mantenimiento de flota 2.jpg, imagenes/Dashboard de mantenimiento de flota 3.jpg">
+                 data-gallery="imagenes/Dashboard de mantenimiento de flota.jpg, imagenes/Dashboard de mantenimiento de flota 2.jpg, imagenes/Dashboard de mantenimiento de flota 3.png">
                 <a href="https://excelkpisoluciones.gumroad.com/l/udrnfz" class="btn-comprar">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
@@ -182,53 +193,31 @@
                 </div>
                 <span>Dashboard de Mantenimiento de Flota</span>
             </div>
+            
         </div>
         <a href="#contacto" class="btn-primary">Ver catálogo completo</a>
     </div>
 </section>
 
-   <section class="soluciones-personalizadas">
+   <!-- Soluciones Personalizadas --> 
+<section class="soluciones-personalizadas">
     <div class="container">
         <h2>Soluciones Personalizadas</h2>
         <p>Conoce algunos de los proyectos exclusivos que hemos realizado a la medida...</p>
         <div class="personalizadas-grid">
             
-            <div class="personalizadas-item"
-                 data-gallery="imagenes/Control de contenedores navieros.jpg, imagenes/Control de contenedores navieros 2.jpg, imagenes/Control de contenedores navieros 3.jpg">
-                <div class="personalizadas-img-box">
-                    <img src="imagenes/Control de contenedores navieros.jpg" 
-                         alt="Proyecto 1" 
-                         class="personalizadas-img"/>
-                </div>
-                <span>CONTROL DE CONTENEDORES NAVIEROS</span>
-            </div>
+            <!-- Tarjeta 1 -->
+            <div class="personalizadas-item" 
+     data-gallery="imagenes/Control de contenedores navieros.jpg, imagenes/Control de contenedores navieros 2.jpg, imagenes/Control de contenedores navieros 3.jpg">
+    <div class="personalizadas-img-box">
+        <img src="imagenes/Control de contenedores navieros.jpg" 
+             alt="Proyecto 1" 
+             class="personalizadas-img"/>
+    </div>
+    <span>CONTROL DE CONTENEDORES NAVIEROS</span>
+</div>
 
-            <div class="personalizadas-item" data-gallery="imagenes/ejemplo1.png">
-                <div class="personalizadas-img-box">
-                    <img src="imagenes/ejemplo1.png" 
-                         alt="Proyecto 2" 
-                         class="personalizadas-img"/>
-                </div>
-                <span>Dashboard para gestión de inventarios</span>
-            </div>
-
-            <div class="personalizadas-item" data-gallery="imagenes/ejemplo2.png">
-                <div class="personalizadas-img-box">
-                    <img src="imagenes/ejemplo2.png" 
-                         alt="Proyecto 3" 
-                         class="personalizadas-img"/>
-                </div>
-                <span>Nombre del tercer proyecto</span>
-            </div>
-
-            <div class="personalizadas-item" data-gallery="imagenes/ejemplo3.png">
-                <div class="personalizadas-img-box">
-                    <img src="imagenes/ejemplo3.png" 
-                         alt="Proyecto 4" 
-                         class="personalizadas-img"/>
-                </div>
-                <span>Nombre del cuarto proyecto</span>
-            </div>
+            
 
         </div>
     </div>
@@ -236,6 +225,7 @@
 
 </section>
 
+    <!-- Plantillas -->
     <section id="plantillas" class="plantillas">
         <div class="container">
             <h2>Plantillas a tu Medida</h2>
@@ -244,6 +234,7 @@
         </div>
     </section>
 
+    <!-- Sobre Nosotros -->
     <section id="about" class="sobre-nosotros">
         <div class="container sobre-content">
             <div class="sobre-texto">
@@ -276,6 +267,7 @@
                         <text x="150" y="165" font-family="Arial" font-size="12">"Transformando datos</text>
                         <text x="150" y="185" font-family="Arial" font-size="12">en rendimiento"</text>
                         
+                        <!-- Iconos pequeños -->
                         <circle cx="100" cy="100" r="20" fill="#ffffff" opacity="0.2"/>
                         <circle cx="200" cy="100" r="20" fill="#ffffff" opacity="0.2"/>
                         <circle cx="100" cy="200" r="20" fill="#ffffff" opacity="0.2"/>
@@ -291,6 +283,7 @@
         </div>
     </section>
 
+    <!-- Política de Uso -->
     <section class="legal">
         <div class="container">
             <h2>Política de Uso y Propiedad Intelectual</h2>
@@ -304,10 +297,12 @@
         </div>
     </section>
 
-        <section id="contacto" class="contacto">
+        <!-- Contacto -->
+    <section id="contacto" class="contacto">
         <div class="container">
             <h2>Contacto</h2>
             
+            <!-- Redes Sociales Destacadas -->
             <div class="redes-destacadas">
                 <h3>Síguenos en Redes Sociales</h3>
                 <div class="redes-grid-nueva">
@@ -379,6 +374,7 @@
                 </div>
             </div>
 
+            <!-- Contacto Directo -->
             <div class="contacto-directo">
                 <div class="contacto-metodos">
                     <div class="metodo-contacto email">
@@ -407,6 +403,7 @@
                 </div>
             </div>
 
+            <!-- Formulario de Contacto -->
             <div class="formulario-section">
                 <h3>Envíanos un Mensaje</h3>
                 <form class="contact-form" action="https://formspree.io/f/xrbrzver" method="POST">
@@ -422,6 +419,7 @@
     </section>
 
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>© 2025 Excel KPI Soluciones (EKS). Todos los derechos reservados.</p>
@@ -431,14 +429,13 @@
     </footer>
 
     <div id="lightbox" class="lightbox" style="display:none;">
-        <span class="lightbox-close" id="lightbox-close">&times;</span>
-        <button id="lightbox-prev" class="lightbox-nav prev">❮</button>
-        <img class="lightbox-content" id="lightbox-img" src="" alt="Vista ampliada"/>
-        <button id="lightbox-next" class="lightbox-nav next">❯</button>
-    </div>
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <button id="lightbox-prev" class="lightbox-nav prev">❮</button>
+    <img class="lightbox-content" id="lightbox-img" src="" alt="Vista ampliada"/>
+    <button id="lightbox-next" class="lightbox-nav next">❯</button>
+</div>
 
     <script src="scripts.js"></script>
 
 </body>
 </html>
-
