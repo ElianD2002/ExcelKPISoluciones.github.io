@@ -1378,6 +1378,42 @@ footer p {
     cursor: pointer;
 }
 
+/* ========================================================= */
+/* === ESTILOS DE NAVEGACIÓN DE CARRUSEL (NUEVOS) === */
+/* ========================================================= */
+.lightbox-nav {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    z-index: 3001; /* Sobre la imagen */
+}
+
+.lightbox-nav.prev {
+    left: 10px;
+    border-radius: 3px 0 0 3px;
+}
+
+.lightbox-nav.next {
+    right: 10px;
+    border-radius: 0 3px 3px 0;
+}
+
+.lightbox-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
 
 
 
