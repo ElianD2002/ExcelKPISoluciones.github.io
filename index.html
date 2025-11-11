@@ -10,21 +10,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-<header>
+    <header>
     <div class="container header-container">
         <div class="logo-container">
             <img src="imagenes/Logo EKS completo son fondo.png" alt="Logo EKS" class="logo-horizontal"/>
         </div>
 
-        <!-- Menú hamburguesa (solo móvil) -->
         <button class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <!-- Menú - IMPORTANTE: Agregar id="menu" -->
         <ul class="menu" id="menu">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#servicios">Servicios</a></li>
@@ -38,23 +35,76 @@
 </header>
 
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero"> 
-    <div class="container hero-content">
-        <h1>Transformamos tus datos en decisiones inteligentes.</h1>
-        <p>En Excel KPI Soluciones (EKS) te ayudamos a pasar de reportes manuales a dashboards automáticos que muestran el verdadero rendimiento de tu negocio.</p>
-        <div class="hero-buttons">
-            <a href="#portafolio" class="btn-primary">Ver ejemplos</a>
-            <a href="#contacto" class="btn-secondary">Contactar ahora</a>
-        </div>
-        <div class="hero-image">
-            <img src="imagenes/Dashboard de mantenimiento de flota.jpg" alt="Dashboard de Mantenimiento de Flota" class="hero-img" />
-        </div>
-    </div>
-</section>
+    <section id="inicio" class="hero">
+        <div class="container hero-content">
+            <h1>Transformamos tus datos en decisiones inteligentes.</h1>
+            <p>En Excel KPI Soluciones (EKS) te ayudamos a pasar de reportes manuales a dashboards automáticos  que muestran el verdadero rendimiento de tu negocio.</p>
+            <div class="hero-buttons">
+                <a href="#portafolio" class="btn-primary">Ver ejemplos</a>
+                <a href="#contacto" class="btn-secondary">Contactar ahora</a>
+            </div>
+            <div class="hero-image">
+                <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gradientDash" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00A859;stop-opacity:0.1" />
+                            <stop offset="100%" style="stop-color:#222222;stop-opacity:0.1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="800" height="400" fill="#ffffff" stroke="#00A859" stroke-width="2" rx="10"/>
+                    <rect x="20" y="20" width="760" height="50" fill="#00A859" rx="5"/>
+                    <text x="40" y="50" font-family="Arial" font-size="24" fill="#ffffff" font-weight="bold">Dashboard de Ventas - Excel KPI</text>
+                    
+                    <rect x="20" y="90" width="180" height="120" fill="#f0f0f0" stroke="#00A859" stroke-width="1" rx="5"/>
+                    <text x="110" y="115" font-family="Arial" font-size="12" fill="#222222" text-anchor="middle" font-weight="bold">VENTAS TOTALES</text>
+                    <text x="110" y="155" font-family="Arial" font-size="28" fill="#00A859" text-anchor="middle" font-weight="bold">$125K</text>
+                    <text x="110" y="180" font-family="Arial" font-size="10" fill="#666666" text-anchor="middle">↑ 15% vs mes anterior</text>
 
+                    <rect x="220" y="90" width="180" height="120" fill="#f0f0f0" stroke="#00A859" stroke-width="1" rx="5"/>
+                    <text x="310" y="115" font-family="Arial" font-size="12" fill="#222222" text-anchor="middle" font-weight="bold">CLIENTES NUEVOS</text>
+                    <text x="310" y="155" font-family="Arial" font-size="28" fill="#00A859" text-anchor="middle" font-weight="bold">42</text>
+                    <text x="310" y="180" font-family="Arial" font-size="10" fill="#666666" text-anchor="middle">↑ 8% vs mes anterior</text>
 
-    <!-- Qué Hacemos / Propuesta de Valor -->
+                    <rect x="420" y="90" width="180" height="120" fill="#f0f0f0" stroke="#00A859" stroke-width="1" rx="5"/>
+                    <text x="510" y="115" font-family="Arial" font-size="12" fill="#222222" text-anchor="middle" font-weight="bold">TASA CONVERSIÓN</text>
+                    <text x="510" y="155" font-family="Arial" font-size="28" fill="#00A859" text-anchor="middle" font-weight="bold">32%</text>
+                    <text x="510" y="180" font-family="Arial" font-size="10" fill="#666666" text-anchor="middle">↓ 2% vs mes anterior</text>
+
+                    <rect x="620" y="90" width="160" height="120" fill="#f0f0f0" stroke="#00A859" stroke-width="1" rx="5"/>
+                    <text x="700" y="115" font-family="Arial" font-size="12" fill="#222222" text-anchor="middle" font-weight="bold">INGRESOS</text>
+                    <text x="700" y="155" font-family="Arial" font-size="28" fill="#00A859" text-anchor="middle" font-weight="bold">$98K</text>
+                    <text x="700" y="180" font-family="Arial" font-size="10" fill="#666666" text-anchor="middle">↑ 12% vs mes anterior</text>
+
+                    <g>
+                        <text x="40" y="250" font-family="Arial" font-size="14" fill="#222222" font-weight="bold">Ventas por Categoría</text>
+                        <circle cx="120" cy="310" r="40" fill="none" stroke="#00A859" stroke-width="15"/>
+                        <circle cx="120" cy="310" r="40" fill="none" stroke="#FFB84D" stroke-width="15" stroke-dasharray="62 125" stroke-dashoffset="0"/>
+                        <circle cx="120" cy="310" r="40" fill="none" stroke="#FF6B6B" stroke-width="15" stroke-dasharray="31 125" stroke-dashoffset="-62"/>
+                        <circle cx="120" cy="310" r="15" fill="#ffffff" stroke="#00A859" stroke-width="2"/>
+                        <text x="120" y="315" font-family="Arial" font-size="10" fill="#222222" text-anchor="middle" font-weight="bold">50%</text>
+
+                        <text x="200" y="290" font-family="Arial" font-size="11" fill="#222222">● Productos: 50%</text>
+                        <text x="200" y="310" font-family="Arial" font-size="11" fill="#222222">● Servicios: 25%</text>
+                        <text x="200" y="330" font-family="Arial" font-size="11" fill="#222222">● Otros: 25%</text>
+                    </g>
+
+                    <g>
+                        <text x="520" y="250" font-family="Arial" font-size="14" fill="#222222" font-weight="bold">Tendencia Mensual</text>
+                        <rect x="480" y="310" width="20" height="40" fill="#00A859"/>
+                        <rect x="510" y="290" width="20" height="60" fill="#00A859"/>
+                        <rect x="540" y="270" width="20" height="80" fill="#00A859"/>
+                        <rect x="570" y="295" width="20" height="55" fill="#00A859"/>
+                        <rect x="600" y="275" width="20" height="75" fill="#00A859"/>
+                        <rect x="630" y="260" width="20" height="90" fill="#00A859"/>
+                        <rect x="660" y="280" width="20" height="70" fill="#00A859"/>
+                        <line x1="470" y1="355" x2="690" y2="355" stroke="#cccccc" stroke-width="1"/>
+                        <text x="470" y="375" font-family="Arial" font-size="9" fill="#666666">Ene Feb Mar Abr May Jun Jul</text>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </section>
+
     <section id="servicios" class="valor">
         <div class="container">
             <h2>Qué Hacemos</h2>
@@ -115,7 +165,6 @@
         </div>
     </section>
 
-    <!-- Por Qué Elegirnos -->
     <section class="elegirnos">
         <div class="container">
             <h2>Por Qué Elegirnos</h2>
@@ -132,27 +181,22 @@
                     <p>Dashboards automatizados que conectan tus datos, procesan la información y la muestran en reportes visuales listos para decidir.</p>
                 <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 340px;">
 
-    <!-- DATOS RAW -->
     <rect x="10" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
     <text x="60" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
         <tspan x="60" dy="0">DATOS</tspan>
         <tspan x="60" dy="18">RAW</tspan>
     </text>
     
-    <!-- Flecha 1 -->
     <polyline points="110,50 130,50" fill="none" stroke="#00a859" stroke-width="3" marker-end="url(#arrowhead)"/>
     
-    <!-- PROCESAR DATOS -->
     <rect x="130" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
     <text x="180" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
         <tspan x="180" dy="0">PROCESAR</tspan>
         <tspan x="180" dy="18">DATOS</tspan>
     </text>
     
-    <!-- Flecha 2 -->
     <polyline points="230,50 250,50" fill="none" stroke="#00a859" stroke-width="3" marker-end="url(#arrowhead)"/>
     
-    <!-- DECISIÓN INTELIGENTE -->
     <rect x="250" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
     <text x="300" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
         <tspan x="300" dy="0">DECISIÓN</tspan>
@@ -176,52 +220,70 @@
         </div>
     </section>
 
-   <!-- Portafolio de Soluciones -->
-<section id="portafolio" class="portafolio">
+   <section id="portafolio" class="portafolio">
     <div class="container">
         <h2>Portafolio de Soluciones</h2>
         <div class="portafolio-grid">
             
-            <!-- TARJETA 1: Dashboard de Mantenimiento de Flota -->
-            <div class="portafolio-item">
+            <div class="portafolio-item"
+                 data-gallery="imagenes/Dashboard de mantenimiento de flota.jpg, imagenes/Dashboard de mantenimiento de flota 2.jpg, imagenes/Dashboard de mantenimiento de flota 3.jpg">
                 <a href="https://excelkpisoluciones.gumroad.com/l/udrnfz" class="btn-comprar">
                     <i class="fas fa-shopping-cart"></i>
                 </a>
                 <div class="portafolio-img-box">
                     <img src="imagenes/Dashboard de mantenimiento de flota.jpg" 
                          alt="Dashboard de Mantenimiento de Flota" 
-                         class="portafolio-img"
-                         data-img="imagenes/Dashboard de mantenimiento de flota.jpg"/>
+                         class="portafolio-img"/>
                 </div>
                 <span>Dashboard de Mantenimiento de Flota</span>
             </div>
-
-            
-
         </div>
         <a href="#contacto" class="btn-primary">Ver catálogo completo</a>
     </div>
 </section>
 
-   <!-- Soluciones Personalizadas --> 
-<section class="soluciones-personalizadas">
+   <section class="soluciones-personalizadas">
     <div class="container">
         <h2>Soluciones Personalizadas</h2>
         <p>Conoce algunos de los proyectos exclusivos que hemos realizado a la medida...</p>
         <div class="personalizadas-grid">
             
-            <!-- Tarjeta 1 -->
-            <div class="personalizadas-item">
+            <div class="personalizadas-item"
+                 data-gallery="imagenes/Control de contenedores navieros.jpg, imagenes/Control de contenedores navieros 2.jpg, imagenes/Control de contenedores navieros 3.jpg">
                 <div class="personalizadas-img-box">
                     <img src="imagenes/Control de contenedores navieros.jpg" 
                          alt="Proyecto 1" 
-                         class="personalizadas-img"
-                         data-img="imagenes/Control de contenedores navieros.jpg"/>
+                         class="personalizadas-img"/>
                 </div>
                 <span>CONTROL DE CONTENEDORES NAVIEROS</span>
             </div>
 
-            
+            <div class="personalizadas-item" data-gallery="imagenes/ejemplo1.png">
+                <div class="personalizadas-img-box">
+                    <img src="imagenes/ejemplo1.png" 
+                         alt="Proyecto 2" 
+                         class="personalizadas-img"/>
+                </div>
+                <span>Dashboard para gestión de inventarios</span>
+            </div>
+
+            <div class="personalizadas-item" data-gallery="imagenes/ejemplo2.png">
+                <div class="personalizadas-img-box">
+                    <img src="imagenes/ejemplo2.png" 
+                         alt="Proyecto 3" 
+                         class="personalizadas-img"/>
+                </div>
+                <span>Nombre del tercer proyecto</span>
+            </div>
+
+            <div class="personalizadas-item" data-gallery="imagenes/ejemplo3.png">
+                <div class="personalizadas-img-box">
+                    <img src="imagenes/ejemplo3.png" 
+                         alt="Proyecto 4" 
+                         class="personalizadas-img"/>
+                </div>
+                <span>Nombre del cuarto proyecto</span>
+            </div>
 
         </div>
     </div>
@@ -229,7 +291,6 @@
 
 </section>
 
-    <!-- Plantillas -->
     <section id="plantillas" class="plantillas">
         <div class="container">
             <h2>Plantillas a tu Medida</h2>
@@ -238,7 +299,6 @@
         </div>
     </section>
 
-    <!-- Sobre Nosotros -->
     <section id="about" class="sobre-nosotros">
         <div class="container sobre-content">
             <div class="sobre-texto">
@@ -271,7 +331,6 @@
                         <text x="150" y="165" font-family="Arial" font-size="12">"Transformando datos</text>
                         <text x="150" y="185" font-family="Arial" font-size="12">en rendimiento"</text>
                         
-                        <!-- Iconos pequeños -->
                         <circle cx="100" cy="100" r="20" fill="#ffffff" opacity="0.2"/>
                         <circle cx="200" cy="100" r="20" fill="#ffffff" opacity="0.2"/>
                         <circle cx="100" cy="200" r="20" fill="#ffffff" opacity="0.2"/>
@@ -287,7 +346,6 @@
         </div>
     </section>
 
-    <!-- Política de Uso -->
     <section class="legal">
         <div class="container">
             <h2>Política de Uso y Propiedad Intelectual</h2>
@@ -301,12 +359,10 @@
         </div>
     </section>
 
-        <!-- Contacto -->
-    <section id="contacto" class="contacto">
+        <section id="contacto" class="contacto">
         <div class="container">
             <h2>Contacto</h2>
             
-            <!-- Redes Sociales Destacadas -->
             <div class="redes-destacadas">
                 <h3>Síguenos en Redes Sociales</h3>
                 <div class="redes-grid-nueva">
@@ -332,7 +388,7 @@
                         <span class="arrow">→</span>
                     </a>
 
-                    <a href="https://www.linkedin.com/company/excelkpisoluciones/" target="_blank" class="red-social-card linkedin">
+                    <a href="https://www.linkedin.com/company/excelkpisoluciones" target="_blank" class="red-social-card linkedin">
                         <div class="red-icon">
                             <i class="fab fa-linkedin-in"></i>
                         </div>
@@ -378,7 +434,6 @@
                 </div>
             </div>
 
-            <!-- Contacto Directo -->
             <div class="contacto-directo">
                 <div class="contacto-metodos">
                     <div class="metodo-contacto email">
@@ -407,7 +462,6 @@
                 </div>
             </div>
 
-            <!-- Formulario de Contacto -->
             <div class="formulario-section">
                 <h3>Envíanos un Mensaje</h3>
                 <form class="contact-form" action="https://formspree.io/f/xrbrzver" method="POST">
@@ -423,7 +477,6 @@
     </section>
 
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>© 2025 Excel KPI Soluciones (EKS). Todos los derechos reservados.</p>
@@ -433,17 +486,13 @@
     </footer>
 
     <div id="lightbox" class="lightbox" style="display:none;">
-    <span class="lightbox-close" id="lightbox-close">&times;</span>
-    <img class="lightbox-content" id="lightbox-img" src="" alt="Vista ampliada"/>
-</div>
+        <span class="lightbox-close" id="lightbox-close">&times;</span>
+        <button id="lightbox-prev" class="lightbox-nav prev">❮</button>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Vista ampliada"/>
+        <button id="lightbox-next" class="lightbox-nav next">❯</button>
+    </div>
 
     <script src="scripts.js"></script>
 
 </body>
 </html>
-
-
-
-
-
-
