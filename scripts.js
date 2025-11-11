@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return; 
             }
             
-            // Usamos el atributo data-gallery en el elemento contenedor (.portafolio-item o .personalizadas-item)
             const galleryString = this.getAttribute('data-gallery');
             const firstImageSrc = this.querySelector('img').src;
             const lightbox = document.getElementById('lightbox');
@@ -82,9 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // =========================================================
     // === RESTO DE LA LÓGICA (Scroll, Menú, Lightbox Close) ===
     // =========================================================
-    
-    // **NOTA:** El código conflictivo del formulario y los antiguos lightboxes han sido eliminados.
-    
+
     // Scroll suave para navegación
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -137,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxClose = document.getElementById('lightbox-close');
     if (lightboxClose) {
         lightboxClose.addEventListener('click', function() {
+            console.log("CIERRA LIGHTBOX");
             document.getElementById('lightbox').style.display = "none";
         });
     }
