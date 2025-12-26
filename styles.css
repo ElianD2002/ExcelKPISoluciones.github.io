@@ -1032,18 +1032,51 @@ footer p { margin: 8px 0; font-size: 0.9rem; }
 .lightbox-nav:hover { background: rgba(0, 0, 0, 0.8); }
 
 
-/* Responsive General */
+/* =========================================
+   ESTILOS DEL MENÚ HAMBURGUESA (Por defecto oculto)
+   ========================================= */
+.hamburger {
+    display: none; /* Oculto en PC */
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 6px;
+    padding: 10px;
+    z-index: 1001; /* Asegura que esté sobre el menú desplegado */
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--color-gris-oscuro);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -6px); }
+
+/* =========================================
+   MEDIA QUERIES (ADAPTACIÓN A MÓVIL)
+   ========================================= */
 @media (max-width: 768px) {
+    /* 1. Ajustes Generales */
     .menu { display: none; }
     .header-container { justify-content: space-between; }
+    
     .btn-demo {
         margin-left: 0;
         padding: 8px 16px;
         font-size: 0.8rem;
+        display: none; /* Ocultar botón demo en header móvil para limpieza visual (opcional) */
     }
+
+    /* 2. Ajustes de Texto y Secciones */
     .hero-content h1 { font-size: 1.8rem; }
     .hero-content > p { font-size: 1rem; }
-    .hero-buttons { flexDirection: column; alignItems: center; }
+    .hero-buttons { flex-direction: column; align-items: center; }
     .btn-primary, .btn-secondary { width: 100%; max-width: 300px; }
     .valor h2, .portafolio h2, .elegirnos h2, .sobre-nosotros h2, .contacto h2, .plantillas h2 { font-size: 1.8rem; }
     .problemas-solucion { grid-template-columns: 1fr; }
@@ -1061,8 +1094,9 @@ footer p { margin: 8px 0; font-size: 0.9rem; }
     
     .logo-horizontal { height: 50px; }
     
-    /* Hamburger Menu Logic */
-    .hamburger { display: flex; }
+    /* 3. Lógica del Menú Móvil (AQUÍ ESTÁ LA MAGIA) */
+    .hamburger { display: flex; } /* ¡ESTO HACE QUE APAREZCA EL BOTÓN! */
+    
     .menu {
         position: absolute;
         top: 100%;
@@ -1071,13 +1105,16 @@ footer p { margin: 8px 0; font-size: 0.9rem; }
         flex-direction: column;
         background: var(--color-blanco);
         gap: 0;
-        display: none;
+        display: none; /* Oculto hasta que se haga click */
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         z-index: 999;
+        border-top: 1px solid #eee;
     }
-    .menu.active { display: flex; }
-    .menu li { border-bottom: 1px solid #ececec; }
-    .menu li a { display: block; padding: 15px 20px; color: var(--color-gris-oscuro); }
+    
+    .menu.active { display: flex; } /* Se muestra al añadir la clase 'active' con JS */
+    
+    .menu li { border-bottom: 1px solid #ececec; width: 100%; text-align: center; }
+    .menu li a { display: block; padding: 15px 20px; color: var(--color-gris-oscuro); width: 100%; }
 }
 
 @media (max-width: 600px) {
@@ -1090,52 +1127,23 @@ footer p { margin: 8px 0; font-size: 0.9rem; }
     .menu li a { font-size: 0.8rem; }
 }
 
-/* Hamburger Menu Icon */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    gap: 6px;
-    padding: 10px;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--color-gris-oscuro);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(10px, 10px); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
-
-/*Efecto de degrado a los titulos*/
+/* Efecto de degrado a los titulos */
 h2 {
     font-family: var(--fuente-titulo);
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 60px;
-    /* El truco del texto degradado */
     background: -webkit-linear-gradient(45deg, #222222, #00A859);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Fallback por si el navegador es viejo */
     color: var(--color-gris-oscuro); 
 }
 
 .plantillas h2 {
-    /*Remover el degradado en esta sección específica*/
     background: none;
     -webkit-text-fill-color: initial;
     color: var(--color-blanco);
-
     margin-bottom: 20px;
 }
-
 
 
