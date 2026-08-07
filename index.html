@@ -1,445 +1,584 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel KPI Soluciones (EKS) - Dashboards y Análisis de Datos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excel KPI Soluciones (EKS) — Dashboards, Automatización y Software a Medida</title>
+<meta name="description" content="EKS diseña dashboards, automatiza reportes y desarrolla software y plataformas web a medida para que tu empresa opere con más control, eficiencia y claridad.">
+<link rel="canonical" href="https://www.excelkpisoluciones.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Excel KPI Soluciones (EKS) — Dashboards, Automatización y Software a Medida">
+<meta property="og:description" content="Diseñamos dashboards, automatizaciones, plataformas web y software a medida para que tu organización trabaje con mayor control, eficiencia y claridad.">
+<meta property="og:url" content="https://www.excelkpisoluciones.com/">
+<meta property="og:image" content="imagenes/Logo%20EKS%20completo%20para%20redes.png">
+<meta property="og:locale" content="es_HN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Excel KPI Soluciones (EKS)">
+<meta name="twitter:description" content="Dashboards, automatización de reportes y software a medida para empresas.">
+<meta name="twitter:image" content="imagenes/Logo%20EKS%20completo%20para%20redes.png">
+
+<link rel="icon" href="imagenes/Logo%20Encabezado.png" type="image/png">
+<link rel="apple-touch-icon" href="imagenes/Logo%20EKS%20completo%20para%20redes.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Excel KPI Soluciones (EKS)",
+  "url": "https://www.excelkpisoluciones.com/",
+  "email": "contacto.eks.hn@gmail.com",
+  "telephone": "+50497075303",
+  "sameAs": [
+    "https://www.facebook.com/share/1BLVsN5kp8/",
+    "https://www.instagram.com/excelkpisoluciones",
+    "https://www.linkedin.com/company/excelkpisoluciones",
+    "https://www.tiktok.com/@excelkpisoluciones",
+    "https://www.youtube.com/@excelkpisoluciones"
+  ],
+  "areaServed": "HN",
+  "description": "Dashboards, automatización de reportes y desarrollo de software y plataformas web a medida."
+}
+</script>
 </head>
 <body>
-    <!-- Header -->
-<header>
-    <div class="container header-container">
-        <div class="logo-container">
-            <img src="imagenes/Logo EKS completo son fondo.png" alt="Logo EKS" class="logo-horizontal"/>
-        </div>
 
-        <!-- Menú hamburguesa (solo móvil) -->
-        <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-        <!-- Menú - IMPORTANTE: Agregar id="menu" -->
-        <ul class="menu" id="menu">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#portafolio">Plantillas</a></li>
-            <li><a href="#about">Sobre Nosotros</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#inicio" class="brand" aria-label="Excel KPI Soluciones, ir al inicio">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgNTYiIHdpZHRoPSIyMjAiIGhlaWdodD0iNTYiIHJvbGU9ImltZyIgYXJpYS1sYWJlbGxlZGJ5PSJsb2dvVGl0bGUiPgogIDx0aXRsZSBpZD0ibG9nb1RpdGxlIj5FeGNlbCBLUEkgU29sdWNpb25lcyAoRUtTKTwvdGl0bGU+CiAgPHJlY3QgeD0iMCIgeT0iMTAiIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiIgcng9IjgiIGZpbGw9IiMxNjRFMzQiLz4KICA8cGF0aCBkPSJNMTAgMzIgTDE2IDIyIEwyMiAyNyBMMjggMTYiIHN0cm9rZT0iIzAwQTg1OSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8dGV4dCB4PSI0NiIgeT0iMzQiIGZvbnQtZmFtaWx5PSJTcGFjZSBHcm90ZXNrLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0VFRjFGNCI+RUtTPC90ZXh0PgogIDx0ZXh0IHg9IjQ2IiB5PSI0OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGxldHRlci1zcGFjaW5nPSIxIiBmaWxsPSIjOTNBMkFGIj5FWENFTCBLUEkgU09MVUNJT05FUzwvdGV4dD4KPC9zdmc+Cg==" alt="Excel KPI Soluciones (EKS)" class="brand-logo" width="140" height="36">
+    </a>
 
-        <a href="#contacto" class="btn-demo">Solicita tu demo gratuita</a>
+    <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+      <ul class="nav-list">
+        <li><a href="#inicio" class="nav-link" data-nav>Inicio</a></li>
+        <li><a href="#soluciones" class="nav-link" data-nav>Soluciones</a></li>
+        <li><a href="#desarrollo" class="nav-link" data-nav>Desarrollo de software</a></li>
+        <li><a href="#portafolio" class="nav-link" data-nav>Proyectos</a></li>
+        <li><a href="#nosotros" class="nav-link" data-nav>Nosotros</a></li>
+        <li><a href="#contacto" class="nav-link" data-nav>Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#contacto" class="btn btn-primary btn-sm">Solicitar consulta</a>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú de navegación">
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+        <span class="menu-toggle-bar" aria-hidden="true"></span>
+      </button>
     </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
+    <ul class="mobile-nav-list">
+      <li><a href="#inicio" data-nav-mobile>Inicio</a></li>
+      <li><a href="#soluciones" data-nav-mobile>Soluciones</a></li>
+      <li><a href="#desarrollo" data-nav-mobile>Desarrollo de software</a></li>
+      <li><a href="#portafolio" data-nav-mobile>Proyectos</a></li>
+      <li><a href="#nosotros" data-nav-mobile>Nosotros</a></li>
+      <li><a href="#contacto" data-nav-mobile>Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn-primary btn-block" data-nav-mobile>Solicitar consulta</a>
+  </div>
 </header>
 
+<main id="contenido">
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero"> 
-    <div class="container hero-content">
-        <h1>Transformamos tus datos en decisiones inteligentes.</h1>
-        <p>En Excel KPI Soluciones (EKS) te ayudamos a pasar de reportes manuales a dashboards automáticos que muestran el verdadero rendimiento de tu negocio.</p>
-        <div class="hero-buttons">
-            <a href="#portafolio" class="btn-primary">Ver ejemplos</a>
-            <a href="#contacto" class="btn-secondary">Contactar ahora</a>
-        </div>
-        <div class="hero-image">
-            <img src="imagenes/Dashboard de mantenimiento de flota.jpg" alt="Dashboard de Mantenimiento de Flota" class="hero-img" />
-        </div>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <div class="hero-glow hero-glow-a"></div>
+      <div class="hero-glow hero-glow-b"></div>
     </div>
-</section>
 
-
-    <!-- Qué Hacemos / Propuesta de Valor -->
-    <section id="servicios" class="valor">
-        <div class="container">
-            <h2>Qué Hacemos</h2>
-            <p class="subtitulo">Transformamos datos operativos en información clara, visual y útil para la toma de decisiones estratégicas, a través de dashboards en Excel totalmente personalizados.</p>
-            <div class="valor-grid">
-                <div class="valor-item">
-                    <div class="valor-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="#00A85915"/>
-                            <path d="M30 70 L40 50 L50 60 L70 30" stroke="#00A859" stroke-width="3" fill="none" stroke-linecap="round"/>
-                            <circle cx="40" cy="50" r="3" fill="#00A859"/>
-                            <circle cx="50" cy="60" r="3" fill="#00A859"/>
-                            <circle cx="70" cy="30" r="3" fill="#00A859"/>
-                        </svg>
-                    </div>
-                    <h3>Diseño de Dashboards Personalizados</h3>
-                    <p>Plantillas creadas a medida, con indicadores clave y filtros dinámicos.</p>
-                </div>
-                <div class="valor-item">
-                    <div class="valor-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="#00A85915"/>
-                            <rect x="25" y="30" width="50" height="40" fill="none" stroke="#00A859" stroke-width="2"/>
-                            <circle cx="35" cy="40" r="3" fill="#00A859"/>
-                            <circle cx="50" cy="55" r="3" fill="#00A859"/>
-                            <circle cx="65" cy="45" r="3" fill="#00A859"/>
-                            <path d="M35 40 L50 55 L65 45" stroke="#00A859" stroke-width="1.5" fill="none"/>
-                        </svg>
-                    </div>
-                    <h3>Automatización de Reportes</h3>
-                    <p>Integra tus datos y genera reportes en segundos con Power Query y VBA.</p>
-                </div>
-                <div class="valor-item">
-                    <div class="valor-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="#00A85915"/>
-                            <polygon points="50,20 80,35 80,65 50,80 20,65 20,35" fill="none" stroke="#00A859" stroke-width="2"/>
-                            <circle cx="50" cy="50" r="8" fill="#00A859"/>
-                            <line x1="50" y1="50" x2="50" y2="25" stroke="#00A859" stroke-width="1.5"/>
-                        </svg>
-                    </div>
-                    <h3>Consultoría KPI y Auditoría de Indicadores</h3>
-                    <p>Analizamos tus métricas actuales y te ayudamos a definir KPIs de alto impacto.</p>
-                </div>
-                <div class="valor-item">
-                    <div class="valor-icon">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="50" cy="50" r="45" fill="#00A85915"/>
-                            <path d="M30 35 Q30 25 40 25 L60 25 Q70 25 70 35 L70 70 Q70 75 65 75 L35 75 Q30 75 30 70 Z" fill="none" stroke="#00A859" stroke-width="2"/>
-                            <circle cx="50" cy="45" r="5" fill="#00A859"/>
-                            <line x1="35" y1="62" x2="65" y2="62" stroke="#00A859" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3>Capacitación y Soporte</h3>
-                    <p>Entrenamos a tu equipo para interpretar y aprovechar al máximo sus dashboards.</p>
-                </div>
-            </div>
+    <div class="container hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Soluciones empresariales de datos y software</p>
+        <h1 class="hero-title">Convertimos datos y procesos en soluciones que impulsan tu empresa.</h1>
+        <p class="hero-subtitle">Diseñamos dashboards, automatizaciones, plataformas web y software a medida para que tu organización trabaje con mayor control, eficiencia y claridad.</p>
+        <div class="hero-cta-group">
+          <a href="#contacto" class="btn btn-primary btn-lg">Solicitar una consulta</a>
+          <a href="#soluciones" class="btn btn-ghost btn-lg">Explorar soluciones</a>
         </div>
-    </section>
+      </div>
 
-    <!-- Por Qué Elegirnos -->
-    <section class="elegirnos">
-        <div class="container">
-            <h2>Por Qué Elegirnos</h2>
-            <div class="problemas-solucion">
-                <div class="problemas-list">
-                    <h3>Problemas que resolvemos:</h3>
-                    <div>❌ Mucha información y poco análisis.</div>
-                    <div>❌ Reportes manuales que consumen tiempo.</div>
-                    <div>❌ Falta de indicadores claros.</div>
-                    <div>❌ Decisiones basadas en intuición, no en datos.</div>
-                </div>
-                <div class="solucion-card con-fondo">
-                    <h3>Nuestra solución:</h3>
-                    <p>Dashboards automatizados que conectan tus datos, procesan la información y la muestran en reportes visuales listos para decidir.</p>
-                <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 340px;">
-
-    <!-- DATOS RAW -->
-    <rect x="10" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
-    <text x="60" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
-        <tspan x="60" dy="0">DATOS</tspan>
-        <tspan x="60" dy="18">RAW</tspan>
-    </text>
-    
-    <!-- Flecha 1 -->
-    <polyline points="110,50 130,50" fill="none" stroke="#00a859" stroke-width="3" marker-end="url(#arrowhead)"/>
-    
-    <!-- PROCESAR DATOS -->
-    <rect x="130" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
-    <text x="180" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
-        <tspan x="180" dy="0">PROCESAR</tspan>
-        <tspan x="180" dy="18">DATOS</tspan>
-    </text>
-    
-    <!-- Flecha 2 -->
-    <polyline points="230,50 250,50" fill="none" stroke="#00a859" stroke-width="3" marker-end="url(#arrowhead)"/>
-    
-    <!-- DECISIÓN INTELIGENTE -->
-    <rect x="250" y="15" width="100" height="70" rx="8" fill="#FFFFFF" stroke="#00a859" stroke-width="2"/>
-    <text x="300" y="42" font-family="Open Sans" font-size="13" fill="#00a859" font-weight="400" text-anchor="middle">
-        <tspan x="300" dy="0">DECISIÓN</tspan>
-        <tspan x="300" dy="18">INTELIGENTE</tspan>
-    </text>
-    
-    <defs>
-        <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-            <polygon points="0 0, 8 4, 0 8" fill="#00a859" />
-        </marker>
-    </defs>
-</svg>
-
-
-
-
-
-
-                </div>
-            </div>
+      <div class="hero-visual reveal">
+        <div class="panel panel-main panel-main--shot">
+          <div class="panel-header">
+            <span class="panel-dot"></span>
+            <span class="panel-dot"></span>
+            <span class="panel-dot"></span>
+            <span class="panel-title">panel_kpi.eks</span>
+          </div>
+          <div class="panel-body panel-body--shot">
+            <img
+              class="hero-shot"
+              src="imagenes/Dashboard de mantenimiento de flota.jpg"
+              alt="Dashboard de mantenimiento de flota desarrollado por EKS"
+              width="720"
+              height="450"
+              loading="eager"
+              decoding="async">
+          </div>
         </div>
-    </section>
+        <div class="panel panel-float panel-float-a">
+          <span class="tag-dot"></span> Automatización activa
+        </div>
+        <div class="panel panel-float panel-float-b">
+          Datos procesados en tiempo real
+        </div>
+      </div>
+    </div>
+  </section>
 
-   <!-- Portafolio de Soluciones -->
-<section id="portafolio" class="portafolio">
+  <!-- CAPACIDADES -->
+  <section class="capabilities" aria-label="Capacidades principales">
+    <div class="container capabilities-inner">
+      <ul class="capabilities-list">
+        <li>Dashboards y KPI</li>
+        <li>Automatización de reportes</li>
+        <li>Software a medida</li>
+        <li>Desarrollo web</li>
+        <li>Soluciones digitales</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOLUCIONES -->
+  <section class="solutions" id="soluciones">
     <div class="container">
-        <h2>Portafolio de Soluciones</h2>
-        <div class="portafolio-grid">
-            
-            <div class="portafolio-item"
-                data-gallery="imagenes/Dashboard de mantenimiento de flota.jpg, imagenes/Dashboard de mantenimiento de flota 2.jpg, imagenes/Dashboard de mantenimiento de flota 3.jpg, imagenes/Dashboard de mantenimiento de flota 4.jpg, imagenes/Dashboard de mantenimiento de flota 5.jpg , imagenes/Dashboard de mantenimiento de flota 6.jpg, imagenes/Dashboard de mantenimiento de flota 7.jpg, imagenes/Dashboard de mantenimiento de flota 8.jpg">
-                <a href="https://excelkpisoluciones.gumroad.com/l/udrnfz" class="btn-comprar">
-                    <i class="fas fa-shopping-cart"></i>
-                </a>
-                <div class="portafolio-img-box">
-                    <img src="imagenes/Dashboard de mantenimiento de flota.jpg" 
-                         alt="Dashboard de Mantenimiento de Flota" 
-                         class="portafolio-img"/>
-                </div>
-                <span>Dashboard de Mantenimiento de Flota</span>
-            </div>
-            
-        </div>
-        <a href="#contacto" class="btn-primary">Ver catálogo completo</a>
-    </div>
-</section>
+      <header class="section-head reveal">
+        <p class="eyebrow">Qué hacemos</p>
+        <h2>Soluciones para transformar datos y procesos en resultados</h2>
+        <p class="section-lede">Dos líneas de trabajo que se complementan: análisis y automatización de indicadores, y desarrollo de software y plataformas a la medida de cada empresa.</p>
+      </header>
 
-   <!-- Soluciones Personalizadas --> 
-<section class="soluciones-personalizadas">
-    <div class="container">
-        <h2>Soluciones Personalizadas</h2>
-        <p>Conoce algunos de los proyectos exclusivos que hemos realizado a la medida...</p>
-        <div class="personalizadas-grid">
-            
-            <!-- Tarjeta 1 -->
-            <div class="personalizadas-item" 
-     data-gallery="imagenes/Control de contenedores navieros.jpg, imagenes/Control de contenedores navieros 2.jpg, imagenes/Control de contenedores navieros 3.jpg, imagenes/Control de contenedores navieros 5.jpg, imagenes/Control de contenedores navieros 6.jpg, imagenes/Control de contenedores navieros 7.jpg">
-    <div class="personalizadas-img-box">
-        <img src="imagenes/Control de contenedores navieros.jpg" 
-             alt="Proyecto 1" 
-             class="personalizadas-img"/>
+      <div class="solutions-group reveal">
+        <h3 class="group-label"><span class="group-index">01</span> Datos y automatización</h3>
+        <div class="solutions-grid">
+          <article class="sol-card sol-card--lg">
+            <h4>Dashboards personalizados</h4>
+            <p class="sol-problem"><strong>Problema:</strong> la información operativa está dispersa en hojas sueltas y correos.</p>
+            <p class="sol-result"><strong>Resultado:</strong> un panel único, con indicadores clave y filtros dinámicos, listo para decidir.</p>
+            <p class="sol-audience">Para empresas con datos operativos recurrentes: logística, ventas, mantenimiento, producción.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Automatización de reportes</h4>
+            <p class="sol-problem"><strong>Problema:</strong> armar reportes a mano consume horas cada semana.</p>
+            <p class="sol-result"><strong>Resultado:</strong> reportes que se generan en segundos con Power Query y VBA.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Consultoría KPI y auditoría de indicadores</h4>
+            <p class="sol-problem"><strong>Problema:</strong> se miden muchas cosas, pero pocas realmente importan.</p>
+            <p class="sol-result"><strong>Resultado:</strong> KPIs claros y de alto impacto para el negocio.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Plantillas empresariales</h4>
+            <p class="sol-result">Plantillas listas para ventas, finanzas, logística y más, adaptadas a tu empresa.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Capacitación y soporte</h4>
+            <p class="sol-result">Formamos a tu equipo para interpretar y aprovechar cada dashboard al máximo.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="solutions-group reveal" id="desarrollo">
+        <h3 class="group-label"><span class="group-index">02</span> Desarrollo y soluciones digitales</h3>
+        <div class="solutions-grid">
+          <article class="sol-card sol-card--lg sol-card--accent">
+            <h4>Software a medida</h4>
+            <p class="sol-problem"><strong>Problema:</strong> los procesos internos dependen de hojas de cálculo y pasos manuales.</p>
+            <p class="sol-result"><strong>Resultado:</strong> sistemas propios que ordenan la operación y reducen el margen de error.</p>
+            <p class="sol-audience">Para empresas que necesitan una herramienta interna hecha a su medida.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Sistemas web empresariales</h4>
+            <p class="sol-result">Plataformas para gestionar clientes, proyectos, finanzas u operaciones desde un solo lugar.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Aplicaciones internas</h4>
+            <p class="sol-result">Herramientas a medida para equipos específicos dentro de la empresa.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Sitios web corporativos</h4>
+            <p class="sol-result">Presencia digital profesional que refleja la seriedad de tu marca.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Catálogos digitales</h4>
+            <p class="sol-result">Catálogos interactivos orientados a conversión, con contacto directo por WhatsApp.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Programas para Windows</h4>
+            <p class="sol-result">Aplicaciones de escritorio a medida cuando el negocio lo requiere.</p>
+          </article>
+          <article class="sol-card">
+            <h4>Integraciones y automatización de procesos</h4>
+            <p class="sol-result">Conectamos herramientas y datos para eliminar tareas repetitivas entre sistemas.</p>
+          </article>
+        </div>
+      </div>
     </div>
-    <span>CONTROL DE CONTENEDORES NAVIEROS</span>
+  </section>
+
+  <!-- PROBLEMA A SOLUCIÓN -->
+  <section class="transform">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Del problema a la solución</p>
+        <h2>Así se transforma la información en tu empresa</h2>
+      </header>
+
+      <div class="transform-grid reveal">
+        <div class="transform-col">
+          <h3 class="transform-title transform-title--before">Antes</h3>
+          <ul class="transform-list transform-list--before">
+            <li>Información dispersa</li>
+            <li>Reportes manuales</li>
+            <li>Procesos repetitivos</li>
+            <li>Falta de indicadores</li>
+            <li>Decisiones basadas en intuición</li>
+          </ul>
+        </div>
+
+        <div class="transform-flow" aria-hidden="true">
+          <div class="flow-stage">
+            <span class="flow-code">DATOS_RAW</span>
+          </div>
+          <svg class="flow-arrow" viewBox="0 0 60 24" aria-hidden="true"><path d="M2 12 H50 M40 4 L52 12 L40 20" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+          <div class="flow-stage flow-stage--processing">
+            <span class="flow-code">PROCESAR</span>
+            <span class="flow-pulse"></span>
+          </div>
+          <svg class="flow-arrow" viewBox="0 0 60 24" aria-hidden="true"><path d="M2 12 H50 M40 4 L52 12 L40 20" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+          <div class="flow-stage flow-stage--result">
+            <span class="flow-code">DECISIÓN</span>
+          </div>
+        </div>
+
+        <div class="transform-col">
+          <h3 class="transform-title transform-title--after">Con EKS</h3>
+          <ul class="transform-list transform-list--after">
+            <li>Información centralizada</li>
+            <li>Automatización</li>
+            <li>Indicadores claros</li>
+            <li>Mayor control operativo</li>
+            <li>Decisiones respaldadas por datos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTAFOLIO -->
+  <section class="portfolio" id="portafolio">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Portafolio de soluciones</p>
+        <h2>Proyectos y casos de solución</h2>
+        <p class="section-lede">Ejemplos reales de dashboards y soluciones a medida que hemos desarrollado.</p>
+      </header>
+
+      <div class="case-grid reveal">
+        <article
+          class="case-card case-card--lg"
+          data-gallery="imagenes/Dashboard de mantenimiento de flota.jpg, imagenes/Dashboard de mantenimiento de flota 2.jpg, imagenes/Dashboard de mantenimiento de flota 3.jpg, imagenes/Dashboard de mantenimiento de flota 4.jpg, imagenes/Dashboard de mantenimiento de flota 5.jpg, imagenes/Dashboard de mantenimiento de flota 6.jpg, imagenes/Dashboard de mantenimiento de flota 7.jpg, imagenes/Dashboard de mantenimiento de flota 8.jpg">
+          <div class="case-media case-gallery" data-inline-gallery>
+            <div class="gallery-stage" tabindex="0" role="button" aria-label="Ampliar galería: Dashboard de mantenimiento de flota">
+              <img class="gallery-slide is-active" src="imagenes/Dashboard de mantenimiento de flota.jpg" alt="Dashboard de mantenimiento de flota — vista 1" width="720" height="480" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Dashboard de mantenimiento de flota 2.jpg" alt="Dashboard de mantenimiento de flota — vista 2" width="720" height="480" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Dashboard de mantenimiento de flota 3.jpg" alt="Dashboard de mantenimiento de flota — vista 3" width="720" height="480" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Dashboard de mantenimiento de flota 4.jpg" alt="Dashboard de mantenimiento de flota — vista 4" width="720" height="480" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Dashboard de mantenimiento de flota 5.jpg" alt="Dashboard de mantenimiento de flota — vista 5" width="720" height="480" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Dashboard de mantenimiento de flota 6.jpg" alt="Dashboard de mantenimiento de flota — vista 6" width="720" height="480" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Dashboard de mantenimiento de flota 7.jpg" alt="Dashboard de mantenimiento de flota — vista 7" width="720" height="480" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Dashboard de mantenimiento de flota 8.jpg" alt="Dashboard de mantenimiento de flota — vista 8" width="720" height="480" loading="lazy">
+            </div>
+            <div class="gallery-nav">
+              <button type="button" class="gallery-btn gallery-prev" aria-label="Imagen anterior">‹</button>
+              <button type="button" class="gallery-btn gallery-next" aria-label="Imagen siguiente">›</button>
+            </div>
+            <span class="gallery-counter" data-gallery-counter>1 / 8</span>
+            <span class="case-tag">Dashboard · Excel</span>
+          </div>
+          <div class="case-body">
+            <h3>Dashboard de mantenimiento de flota</h3>
+            <p><strong>Problema:</strong> seguimiento disperso del mantenimiento de vehículos.</p>
+            <p><strong>Solución:</strong> panel centralizado con indicadores de mantenimiento y alertas visuales.</p>
+            <p class="case-tech">Excel · Power Query · VBA</p>
+            <a href="https://excelkpisoluciones.gumroad.com/l/udrnfz" target="_blank" rel="noopener" class="btn btn-outline btn-sm case-cta">Ver en Gumroad</a>
+          </div>
+        </article>
+
+        <article
+          class="case-card"
+          data-gallery="imagenes/Control de contenedores navieros.jpg, imagenes/Control de contenedores navieros 2.jpg, imagenes/Control de contenedores navieros 3.jpg, imagenes/Control de contenedores navieros 4.jpg, imagenes/Control de contenedores navieros 5.jpg, imagenes/Control de contenedores navieros 6.jpg, imagenes/Control de contenedores navieros 7.jpg, imagenes/Control de contenedores navieros 8.jpg">
+          <div class="case-media case-gallery" data-inline-gallery>
+            <div class="gallery-stage" tabindex="0" role="button" aria-label="Ampliar galería: Control de contenedores navieros">
+              <img class="gallery-slide is-active" src="imagenes/Control de contenedores navieros.jpg" alt="Control de contenedores navieros — vista 1" width="600" height="400" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Control de contenedores navieros 2.jpg" alt="Control de contenedores navieros — vista 2" width="600" height="400" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Control de contenedores navieros 3.jpg" alt="Control de contenedores navieros — vista 3" width="600" height="400" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Control de contenedores navieros 4.jpg" alt="Control de contenedores navieros — vista 4" width="600" height="400" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Control de contenedores navieros 5.jpg" alt="Control de contenedores navieros — vista 5" width="600" height="400" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Control de contenedores navieros 6.jpg" alt="Control de contenedores navieros — vista 6" width="600" height="400" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Control de contenedores navieros 7.jpg" alt="Control de contenedores navieros — vista 7" width="600" height="400" loading="lazy">
+              <img class="gallery-slide" src="imagenes/Control de contenedores navieros 8.jpg" alt="Control de contenedores navieros — vista 8" width="600" height="400" loading="lazy">
+            </div>
+            <div class="gallery-nav">
+              <button type="button" class="gallery-btn gallery-prev" aria-label="Imagen anterior">‹</button>
+              <button type="button" class="gallery-btn gallery-next" aria-label="Imagen siguiente">›</button>
+            </div>
+            <span class="gallery-counter" data-gallery-counter>1 / 8</span>
+            <span class="case-tag">Solución a medida</span>
+          </div>
+          <div class="case-body">
+            <h3>Control de contenedores navieros</h3>
+            <p><strong>Solución:</strong> sistema de seguimiento y control logístico a medida.</p>
+          </div>
+        </article>
+
+        <article class="case-card case-card--empty">
+          <div class="case-body">
+            <span class="case-tag">Próximamente</span>
+            <h3>Software empresarial, sistemas web y catálogos digitales</h3>
+            <p>Estamos documentando nuestros proyectos más recientes de desarrollo de software y plataformas web para presentarlos aquí.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="portfolio-cta reveal">
+        <a href="https://excelkpisoluciones.gumroad.com/l/udrnfz" target="_blank" rel="noopener" class="btn btn-outline">Ver catálogo completo de plantillas</a>
+        <a href="#contacto" class="btn btn-ghost">Solicitar información</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="process">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2>Un proceso claro, de principio a fin</h2>
+      </header>
+
+      <ol class="process-flow reveal">
+        <li class="process-step"><span class="process-num">01</span><h3>Diagnóstico</h3><p>Entendemos tu operación y dónde está el mayor punto de mejora.</p></li>
+        <li class="process-step"><span class="process-num">02</span><h3>Definición de requerimientos</h3><p>Delimitamos alcance, datos y objetivos concretos.</p></li>
+        <li class="process-step"><span class="process-num">03</span><h3>Diseño de la solución</h3><p>Planteamos la arquitectura del dashboard, sistema o plataforma.</p></li>
+        <li class="process-step"><span class="process-num">04</span><h3>Desarrollo e implementación</h3><p>Construimos la solución con foco en estabilidad y usabilidad.</p></li>
+        <li class="process-step"><span class="process-num">05</span><h3>Validación</h3><p>Revisamos junto a tu equipo que todo funcione como se necesita.</p></li>
+        <li class="process-step"><span class="process-num">06</span><h3>Entrega y acompañamiento</h3><p>Entregamos, capacitamos y damos soporte continuo.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- POR QUÉ ELEGIR EKS -->
+  <section class="why">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Por qué elegir EKS</p>
+        <h2>Un equipo enfocado en resultados medibles</h2>
+      </header>
+      <div class="why-grid reveal">
+        <div class="why-item"><h3>Soluciones a medida</h3><p>Cada proyecto se adapta a la realidad de tu empresa, no al revés.</p></div>
+        <div class="why-item"><h3>Comunicación directa</h3><p>Trato cercano con el equipo que desarrolla tu solución.</p></div>
+        <div class="why-item"><h3>Confidencialidad</h3><p>Tus datos y procesos se manejan con reserva absoluta.</p></div>
+        <div class="why-item"><h3>Enfoque en resultados</h3><p>Cada entrega se mide por el problema real que resuelve.</p></div>
+        <div class="why-item"><h3>Excelencia técnica</h3><p>Buenas prácticas de desarrollo y análisis en cada proyecto.</p></div>
+        <div class="why-item"><h3>Escalabilidad</h3><p>Soluciones pensadas para crecer junto con tu empresa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section class="about" id="nosotros">
+    <div class="container about-grid">
+      <div class="about-copy reveal">
+        <p class="eyebrow">Sobre nosotros</p>
+        <h2>De especialistas en Excel a soluciones tecnológicas completas</h2>
+        <p>Excel KPI Soluciones (EKS) nació para ayudar a profesionales, empresas y consultores a usar el poder de Excel para transformar sus datos en información valiosa. Fue fundada por especialistas en gestión de desempeño y automatización de reportes, con experiencia en logística, distribución y análisis operativo.</p>
+        <p>Con el tiempo, esa base analítica se convirtió en algo más amplio: hoy diseñamos también software a medida, sistemas web y plataformas digitales, manteniendo el mismo enfoque con el que empezamos: convertir información en decisiones.</p>
+        <ul class="values-list">
+          <li>Innovación</li>
+          <li>Transparencia</li>
+          <li>Confidencialidad</li>
+          <li>Excelencia técnica</li>
+        </ul>
+      </div>
+      <div class="about-visual reveal" aria-hidden="true">
+        <div class="about-panel">
+          <span class="about-panel-label">EKS</span>
+          <span class="about-panel-sub">Excel KPI Soluciones</span>
+          <span class="about-panel-quote">"Transformando datos en rendimiento"</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA CORPORATIVO -->
+  <section class="cta-band">
+    <div class="cta-band-bg" aria-hidden="true"></div>
+    <div class="container cta-band-inner reveal">
+      <h2>Conversemos sobre el próximo paso digital de tu empresa.</h2>
+      <div class="cta-band-actions">
+        <a href="https://wa.me/50497075303" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+          <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1s-.7.8-.9 1c-.1.2-.3.2-.6.1-.2-.1-1-.4-2-1.2-.7-.6-1.2-1.4-1.4-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.8-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3Z"/></svg>
+          WhatsApp directo
+        </a>
+        <a href="https://calendly.com/eks-soluciones/30min" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Agendar consulta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Contacto</p>
+        <h2>Hablemos de tu próximo proyecto</h2>
+
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">Correo</span>
+            <a href="mailto:contacto.eks.hn@gmail.com">contacto.eks.hn@gmail.com</a>
+          </li>
+          <li>
+            <span class="contact-label">Teléfono</span>
+            <a href="tel:+50497075303">+504 9707-5303</a>
+          </li>
+          <li>
+            <span class="contact-label">WhatsApp</span>
+            <a href="https://wa.me/50497075303" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          </li>
+          <li>
+            <span class="contact-label">Consultoría gratuita</span>
+            <a href="https://calendly.com/eks-soluciones/30min" target="_blank" rel="noopener">Agendar en Calendly</a>
+          </li>
+        </ul>
+
+        <div class="social-row" aria-label="Redes sociales de EKS">
+          <a href="https://www.facebook.com/share/1BLVsN5kp8/" target="_blank" rel="noopener" aria-label="Facebook de EKS" class="social-link">Facebook</a>
+          <a href="https://www.instagram.com/excelkpisoluciones" target="_blank" rel="noopener" aria-label="Instagram de EKS" class="social-link">Instagram</a>
+          <a href="https://www.linkedin.com/company/excelkpisoluciones" target="_blank" rel="noopener" aria-label="LinkedIn de EKS" class="social-link">LinkedIn</a>
+          <a href="https://www.tiktok.com/@excelkpisoluciones" target="_blank" rel="noopener" aria-label="TikTok de EKS" class="social-link">TikTok</a>
+          <a href="https://www.youtube.com/@excelkpisoluciones" target="_blank" rel="noopener" aria-label="YouTube de EKS" class="social-link">YouTube</a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/xrbrzver" method="POST" novalidate>
+        <div class="form-row">
+          <label for="fieldName">Nombre</label>
+          <input type="text" id="fieldName" name="name" autocomplete="name" required aria-describedby="errName">
+          <span class="form-error" id="errName" role="alert"></span>
+        </div>
+        <div class="form-row">
+          <label for="fieldEmail">Correo</label>
+          <input type="email" id="fieldEmail" name="email" autocomplete="email" required aria-describedby="errEmail">
+          <span class="form-error" id="errEmail" role="alert"></span>
+        </div>
+        <div class="form-row">
+          <label for="fieldCompany">Empresa (opcional)</label>
+          <input type="text" id="fieldCompany" name="company" autocomplete="organization">
+        </div>
+        <div class="form-row">
+          <label for="fieldMessage">Mensaje</label>
+          <textarea id="fieldMessage" name="message" rows="5" required aria-describedby="errMessage"></textarea>
+          <span class="form-error" id="errMessage" role="alert"></span>
+        </div>
+        <!-- honeypot anti-spam, invisible para personas -->
+        <div class="form-row form-row--hp" aria-hidden="true">
+          <label for="fieldHp">No llenar este campo</label>
+          <input type="text" id="fieldHp" name="empresa_web" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjAgNTYiIHdpZHRoPSIyMjAiIGhlaWdodD0iNTYiIHJvbGU9ImltZyIgYXJpYS1sYWJlbGxlZGJ5PSJsb2dvVGl0bGUiPgogIDx0aXRsZSBpZD0ibG9nb1RpdGxlIj5FeGNlbCBLUEkgU29sdWNpb25lcyAoRUtTKTwvdGl0bGU+CiAgPHJlY3QgeD0iMCIgeT0iMTAiIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiIgcng9IjgiIGZpbGw9IiMxNjRFMzQiLz4KICA8cGF0aCBkPSJNMTAgMzIgTDE2IDIyIEwyMiAyNyBMMjggMTYiIHN0cm9rZT0iIzAwQTg1OSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8dGV4dCB4PSI0NiIgeT0iMzQiIGZvbnQtZmFtaWx5PSJTcGFjZSBHcm90ZXNrLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0VFRjFGNCI+RUtTPC90ZXh0PgogIDx0ZXh0IHg9IjQ2IiB5PSI0OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGxldHRlci1zcGFjaW5nPSIxIiBmaWxsPSIjOTNBMkFGIj5FWENFTCBLUEkgU09MVUNJT05FUzwvdGV4dD4KPC9zdmc+Cg==" alt="Excel KPI Soluciones (EKS)" width="150" height="38">
+      <p>Dashboards, automatización de reportes y desarrollo de software a medida para empresas.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#soluciones">Soluciones</a></li>
+        <li><a href="#portafolio">Proyectos</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Servicios</h3>
+      <ul>
+        <li>Dashboards y KPI</li>
+        <li>Automatización de reportes</li>
+        <li>Software a medida</li>
+        <li>Sistemas y sitios web</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contacto</h3>
+      <ul>
+        <li><a href="mailto:contacto.eks.hn@gmail.com">contacto.eks.hn@gmail.com</a></li>
+        <li><a href="tel:+50497075303">+504 9707-5303</a></li>
+        <li><a href="https://wa.me/50497075303" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul>
+      <div class="social-row social-row--footer">
+        <a href="https://www.facebook.com/share/1BLVsN5kp8/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+        <a href="https://www.instagram.com/excelkpisoluciones" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.linkedin.com/company/excelkpisoluciones" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+        <a href="https://www.tiktok.com/@excelkpisoluciones" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+        <a href="https://www.youtube.com/@excelkpisoluciones" target="_blank" rel="noopener" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© <span id="footerYear"></span> Excel KPI Soluciones (EKS). Todos los derechos reservados.</p>
+    <p class="footer-legal">
+      <a href="#">Política de privacidad</a> · <a href="#">Política de uso y propiedad intelectual</a>
+    </p>
+    <p class="footer-credit">Diseñado por EKS</p>
+  </div>
+</footer>
+
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" hidden>
+  <div class="lightbox-dialog" role="document">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Cerrar galería">&times;</button>
+    <p class="lightbox-title" id="lightboxTitle">Galería de proyecto</p>
+    <div class="lightbox-stage">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
+    <div class="lightbox-toolbar">
+      <button type="button" class="lightbox-nav prev" id="lightboxPrev" aria-label="Imagen anterior">‹</button>
+      <div class="lightbox-dots" id="lightboxDots" role="tablist" aria-label="Selección de imagen"></div>
+      <button type="button" class="lightbox-nav next" id="lightboxNext" aria-label="Imagen siguiente">›</button>
+      <span class="lightbox-counter" id="lightboxCounter"></span>
+    </div>
+  </div>
 </div>
 
-            
-
-        </div>
-    </div>
-</section>
-
-</section>
-
-    <!-- Plantillas -->
-    <section id="plantillas" class="plantillas">
-        <div class="container">
-            <h2>Plantillas a tu Medida</h2>
-            <p>Conoce nuestras plantillas listas para usar: ventas, finanzas, logística y más. Solicita la adaptación para tu empresa.</p>
-            <a href="#contacto" class="btn-demo">Solicita información</a>
-        </div>
-    </section>
-
-    <!-- Sobre Nosotros -->
-    <section id="about" class="sobre-nosotros">
-        <div class="container sobre-content">
-            <div class="sobre-texto">
-                <h2>Sobre Nosotros</h2>
-                <p>Excel KPI Soluciones (EKS) fue creado para ayudar a profesionales, empresas y consultores a usar el poder de Excel para transformar sus datos en información valiosa.</p>
-                <p>Fundado por especialistas en gestión de desempeño y automatización de reportes, con experiencia en logística, distribución y análisis operativo.</p>
-                <h3>Valores</h3>
-                <ul class="valores-list">
-                    <li>✓ Innovación</li>
-                    <li>✓ Transparencia</li>
-                    <li>✓ Confidencialidad</li>
-                    <li>✓ Excelencia técnica</li>
-                </ul>
-            </div>
-            <div class="sobre-imagen">
-                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="gradValores" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#00A859;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#222222;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="150" cy="150" r="140" fill="url(#gradValores)"/>
-                    <circle cx="150" cy="150" r="130" fill="#ffffff" opacity="0.1"/>
-                    
-                    <g text-anchor="middle" fill="#ffffff">
-                        <text x="150" y="80" font-family="Arial" font-size="28" font-weight="bold">EKS</text>
-                        <text x="150" y="110" font-family="Arial" font-size="14">Excel KPI</text>
-                        <text x="150" y="130" font-family="Arial" font-size="14">Soluciones</text>
-                        <text x="150" y="165" font-family="Arial" font-size="12">"Transformando datos</text>
-                        <text x="150" y="185" font-family="Arial" font-size="12">en rendimiento"</text>
-                        
-                        <!-- Iconos pequeños -->
-                        <circle cx="100" cy="100" r="20" fill="#ffffff" opacity="0.2"/>
-                        <circle cx="200" cy="100" r="20" fill="#ffffff" opacity="0.2"/>
-                        <circle cx="100" cy="200" r="20" fill="#ffffff" opacity="0.2"/>
-                        <circle cx="200" cy="200" r="20" fill="#ffffff" opacity="0.2"/>
-                        
-                        <text x="100" y="107" font-family="Arial" font-size="18" fill="#ffffff">📊</text>
-                        <text x="200" y="107" font-family="Arial" font-size="18" fill="#ffffff">⚙️</text>
-                        <text x="100" y="207" font-family="Arial" font-size="18" fill="#ffffff">🎯</text>
-                        <text x="200" y="207" font-family="Arial" font-size="18" fill="#ffffff">👨‍💼</text>
-                    </g>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <!-- Política de Uso -->
-    <section class="legal">
-        <div class="container">
-            <h2>Política de Uso y Propiedad Intelectual</h2>
-            <p>Todos los desarrollos y dashboards son propiedad intelectual de EKS. Se otorga licencia de uso no exclusiva para fines internos del cliente.</p>
-            <p>No se permite la distribución, copia ni eliminación del logo de EKS sin autorización.</p>
-            <p>Contacto para licencias o aclaraciones:</p>
-            <ul>
-                <li>📧 contacto.eks.hn@gmail.com</li>
-                <li>🌐 www.excelkpisoluciones.com</li>
-            </ul>
-        </div>
-    </section>
-
-        <!-- Contacto -->
-    <section id="contacto" class="contacto">
-        <div class="container">
-            <h2>Contacto</h2>
-            
-            <!-- Redes Sociales Destacadas -->
-            <div class="redes-destacadas">
-                <h3>Síguenos en Redes Sociales</h3>
-                <div class="redes-grid-nueva">
-                    <a href="https://www.facebook.com/share/1BLVsN5kp8/" target="_blank" class="red-social-card facebook">
-                        <div class="red-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <div class="red-info">
-                            <h4>Facebook</h4>
-                            <p>Excel KPI Soluciones</p>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-
-                    <a href="https://www.instagram.com/excelkpisoluciones" target="_blank" class="red-social-card instagram">
-                        <div class="red-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="red-info">
-                            <h4>Instagram</h4>
-                            <p>@excelkpisoluciones</p>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-
-                    <a href="https://www.linkedin.com/company/excelkpisoluciones" target="_blank" class="red-social-card linkedin">
-                        <div class="red-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </div>
-                        <div class="red-info">
-                            <h4>LinkedIn</h4>
-                            <p>Excel KPI Soluciones</p>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-
-                    <a href="https://wa.me/50497075303" target="_blank" class="red-social-card whatsapp">
-                        <div class="red-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="red-info">
-                            <h4>WhatsApp</h4>
-                            <p>Contacto directo</p>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-
-                    <a href="https://www.tiktok.com/@excelkpisoluciones" target="_blank" class="red-social-card tiktok">
-                        <div class="red-icon">
-                            <i class="fab fa-tiktok"></i>
-                        </div>
-                        <div class="red-info">
-                            <h4>TikTok</h4>
-                            <p>@excelkpisoluciones</p>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-
-                    <a href="https://www.youtube.com/@excelkpisoluciones" target="_blank" class="red-social-card youtube">
-                        <div class="red-icon">
-                            <i class="fab fa-youtube"></i>
-                        </div>
-                        <div class="red-info">
-                            <h4>YouTube</h4>
-                            <p>Excel KPI Soluciones</p>
-                        </div>
-                        <span class="arrow">→</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Contacto Directo -->
-            <div class="contacto-directo">
-                <div class="contacto-metodos">
-                    <div class="metodo-contacto email">
-                        <div class="metodo-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h4>Email</h4>
-                        <a href="mailto:contacto.eks.hn@gmail.com">contacto.eks.hn@gmail.com</a>
-                    </div>
-
-                    <div class="metodo-contacto telefono">
-                        <div class="metodo-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <h4>Teléfono</h4>
-                        <a href="tel:+50497075303">+ (504) 9707-5303</a>
-                    </div>
-
-                    <div class="metodo-contacto web">
-                        <div class="metodo-icon">
-                            <i class="fas fa-desktop" style="color: #00A859;"></i>
-                        </div>
-                        <h4>Agendar Consultoria Gratis</h4>
-                        <a href="https://calendly.com/eks-soluciones/30min?month=2025-11" target="_blank">Click Aquí</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Formulario de Contacto -->
-            <div class="formulario-section">
-                <h3>Envíanos un Mensaje</h3>
-                <form class="contact-form" action="https://formspree.io/f/xrbrzver" method="POST">
-                    <input type="text" name="name" placeholder="Tu Nombre" required>
-                    <input type="email" name="email" placeholder="Tu Correo" required>
-                    <input type="text" name="company" placeholder="Tu Empresa">
-                    <textarea name="message" placeholder="Cuéntanos tu necesidad..." required></textarea>
-                    <button type="submit" class="btn-primary">Enviar Mensaje</button>
-                </form>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2025 Excel KPI Soluciones (EKS). Todos los derechos reservados.</p>
-            <p>Política de privacidad | Política de uso y propiedad intelectual</p>
-            <p>Diseñado por EKS</p>
-        </div>
-    </footer>
-
-    <div id="lightbox" class="lightbox" style="display:none;">
-    <span class="lightbox-close" id="lightbox-close">&times;</span>
-    <button id="lightbox-prev" class="lightbox-nav prev">❮</button>
-    <img class="lightbox-content" id="lightbox-img" src="" alt="Vista ampliada"/>
-    <button id="lightbox-next" class="lightbox-nav next">❯</button>
-</div>
-
-    <script src="scripts.js"></script>
-
+<script src="scripts.js"></script>
 </body>
 </html>
-
-
-
-
