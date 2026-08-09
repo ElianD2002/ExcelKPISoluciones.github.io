@@ -8,6 +8,48 @@
    oscuro da profundidad a fondos y degradados (--brand-primary-dark).
    ========================================================================== */
 
+/* Self-hosted WOFF2 (latin) — only weights used by the landing.
+   Sources: @fontsource Inter / Space Grotesk / JetBrains Mono (OFL). */
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-latin-400.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("assets/fonts/inter-latin-600.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("assets/fonts/space-grotesk-latin-600.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("assets/fonts/space-grotesk-latin-700.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("assets/fonts/jetbrains-mono-latin-500.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
 :root {
   /* Marca — colores reales de EKS */
   --brand-primary: #078B4D;
@@ -32,9 +74,9 @@
   --text-on-light-secondary: #4C5A64;
 
   /* Tipografía */
-  --font-display: "Space Grotesk", "Inter", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   /* Layout */
   --container-width: 1200px;
@@ -81,6 +123,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
+  font-weight: 400;
   background: var(--background-dark);
   color: var(--text-primary);
   line-height: 1.6;
@@ -152,11 +195,29 @@ section {
 
 .eyebrow {
   font-family: var(--font-mono);
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.78rem;
   color: var(--brand-secondary);
   margin-bottom: var(--space-2);
+}
+
+/* Mono UI chrome: match self-hosted JetBrains Mono 500
+   (body inherits 400; only weight 500 is shipped for mono). */
+.panel-title,
+.capabilities-list li,
+.group-index,
+.flow-stage,
+.case-media--missing::after,
+.case-tag,
+.case-tech,
+.process-num,
+.values-list li,
+.about-panel-quote,
+.gallery-counter,
+.lightbox-counter {
+  font-weight: 500;
 }
 
 .section-head {

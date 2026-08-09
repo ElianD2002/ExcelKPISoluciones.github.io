@@ -1,0 +1,7 @@
+WOFF2 files sourced from official @fontsource npm packages (SIL Open Font License):
+- @fontsource/inter@5.2.5
+- @fontsource/space-grotesk@5.2.8
+- @fontsource/jetbrains-mono@5.2.5
+
+Subset: latin (covers Spanish áéíóúñü¿¡ and related Latin-1 characters).
+Only weights used by the landing are included.
