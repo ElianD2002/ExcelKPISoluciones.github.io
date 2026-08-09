@@ -450,6 +450,11 @@ section {
   border: 1px solid var(--border-subtle);
 }
 
+.panel-body--shot picture {
+  display: block;
+  width: 100%;
+}
+
 .hero-shot {
   display: block;
   width: 100%;

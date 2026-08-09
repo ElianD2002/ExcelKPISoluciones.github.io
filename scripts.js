@@ -267,13 +267,39 @@
     return value.split(",").map(function (s) { return s.trim(); }).filter(Boolean);
   }
 
-  function setInlineSlide(root, index) {
+  function ensureSlideLoaded(slide) {
+    if (!slide) return;
+    var src = slide.getAttribute("src");
+    var dataSrc = slide.getAttribute("data-src");
+    if ((!src || src === "") && dataSrc) {
+      slide.src = dataSrc;
+      slide.removeAttribute("data-src");
+    }
+  }
+
+  function prefetchSlide(slide) {
+    if (!slide) return;
+    var dataSrc = slide.getAttribute("data-src");
+    if (!dataSrc) return;
+    // Warm HTTP cache without attaching to visible slide yet.
+    var pre = new Image();
+    pre.decoding = "async";
+    pre.src = dataSrc;
+  }
+
+  function setInlineSlide(root, index, prefetchNext) {
     var slides = root.querySelectorAll(".gallery-slide");
     var counter = root.querySelector("[data-gallery-counter]");
     if (!slides.length) return;
 
     var total = slides.length;
     var safeIndex = ((index % total) + total) % total;
+    var nextIndex = (safeIndex + 1) % total;
+
+    ensureSlideLoaded(slides[safeIndex]);
+    if (prefetchNext) {
+      prefetchSlide(slides[nextIndex]);
+    }
 
     slides.forEach(function (slide, i) {
       slide.classList.toggle("is-active", i === safeIndex);
@@ -292,7 +318,8 @@
       if (!slides.length) return;
 
       gallery.dataset.currentIndex = "0";
-      setInlineSlide(gallery, 0);
+      // Do not prefetch neighboring slides on page load.
+      setInlineSlide(gallery, 0, false);
 
       var prevBtn = gallery.querySelector(".gallery-prev");
       var nextBtn = gallery.querySelector(".gallery-next");
@@ -302,7 +329,7 @@
           e.preventDefault();
           e.stopPropagation();
           var idx = parseInt(gallery.dataset.currentIndex || "0", 10);
-          setInlineSlide(gallery, idx - 1);
+          setInlineSlide(gallery, idx - 1, true);
         });
       }
 
@@ -311,7 +338,7 @@
           e.preventDefault();
           e.stopPropagation();
           var idx = parseInt(gallery.dataset.currentIndex || "0", 10);
-          setInlineSlide(gallery, idx + 1);
+          setInlineSlide(gallery, idx + 1, true);
         });
       }
 
@@ -339,10 +366,35 @@
     });
   }
 
+  function preloadUrl(url) {
+    if (!url) return;
+    var pre = new Image();
+    pre.decoding = "async";
+    pre.src = url;
+  }
+
   function updateLightbox() {
     if (!lightboxImg || !currentGallery.length) return;
-    lightboxImg.src = currentGallery[currentIndex];
+    var src = currentGallery[currentIndex];
+    var nextSrc = currentGallery[(currentIndex + 1) % currentGallery.length];
+
     lightboxImg.alt = currentTitle + " — vista " + (currentIndex + 1) + " de " + currentGallery.length;
+    lightboxImg.src = src;
+    if (nextSrc && nextSrc !== src) {
+      preloadUrl(nextSrc);
+    }
+
+    // Keep matching inline slide hydrated if the lightbox source exists there.
+    document.querySelectorAll("[data-inline-gallery]").forEach(function (gallery) {
+      var slides = gallery.querySelectorAll(".gallery-slide");
+      slides.forEach(function (slide) {
+        var slideSrc = slide.getAttribute("src") || slide.getAttribute("data-src");
+        if (slideSrc === src) {
+          ensureSlideLoaded(slide);
+        }
+      });
+    });
+
     if (lightboxTitle) {
       lightboxTitle.textContent = currentTitle;
     }
