@@ -623,45 +623,91 @@ section {
 
 .solutions-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
+  align-items: stretch;
 }
 
 .sol-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 11.5rem;
   background: var(--surface-light);
+  color: var(--text-on-light);
   border: 1px solid var(--border-subtle-light);
   border-radius: var(--radius-md);
   padding: var(--space-3);
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    transform 0.2s var(--ease);
 }
 
-.sol-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -28px rgba(15, 25, 35, 0.35);
+.sol-card h4 {
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+  color: var(--text-on-light);
+  transition: color 0.2s var(--ease);
 }
 
-.sol-card--lg {
-  grid-column: span 2;
-  grid-row: span 2;
-  background: var(--brand-primary);
-  color: #fff;
-  border-color: transparent;
-}
-
-.sol-card--lg h4 { font-size: 1.5rem; }
-.sol-card--lg .sol-problem,
-.sol-card--lg .sol-result,
-.sol-card--lg .sol-audience { color: rgba(255,255,255,0.82); }
-
-.sol-card--accent {
-  border-left: 3px solid var(--brand-secondary);
-}
-
-.sol-card h4 { margin-bottom: 0.7rem; font-size: 1.1rem; }
-.sol-problem, .sol-result, .sol-audience {
+.sol-problem,
+.sol-result,
+.sol-audience {
   font-size: 0.92rem;
   color: var(--text-on-light-secondary);
   margin-bottom: 0.4rem;
+  transition: color 0.2s var(--ease);
+}
+
+.sol-card strong {
+  color: inherit;
+  font-weight: 600;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sol-card:hover {
+    background: var(--brand-primary);
+    color: #fff;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -24px rgba(15, 25, 35, 0.4);
+  }
+
+  .sol-card:hover h4,
+  .sol-card:hover .sol-problem,
+  .sol-card:hover .sol-result,
+  .sol-card:hover .sol-audience,
+  .sol-card:hover strong {
+    color: #fff;
+  }
+}
+
+.sol-card:active {
+  background: var(--brand-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 12px 28px -22px rgba(15, 25, 35, 0.35);
+}
+
+.sol-card:active h4,
+.sol-card:active .sol-problem,
+.sol-card:active .sol-result,
+.sol-card:active .sol-audience,
+.sol-card:active strong {
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sol-card {
+    transition: none;
+  }
+
+  .sol-card:hover {
+    transform: none;
+  }
 }
 
 /* ==========================================================================
@@ -1614,7 +1660,8 @@ body.lightbox-open {
 
   .solutions-grid,
   .why-grid { grid-template-columns: 1fr; }
-  .sol-card--lg { grid-column: span 1; grid-row: span 1; }
+
+  .sol-card { min-height: 0; }
 
   .transform-grid { grid-template-columns: 1fr; }
 
@@ -1677,8 +1724,7 @@ body.lightbox-open {
   .hero-inner { grid-template-columns: 1fr; }
   .hero-visual { min-height: 0; margin-top: var(--space-4); }
 
-  .solutions-grid { grid-template-columns: repeat(2, 1fr); }
-  .sol-card--lg { grid-column: span 2; }
+  .solutions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .case-grid { grid-template-columns: repeat(2, 1fr); }
   .case-card--lg { grid-column: span 2; }
