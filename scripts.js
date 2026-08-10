@@ -573,7 +573,16 @@
   if (!form) return;
 
   var statusEl = document.getElementById("formStatus");
-  var serviceLabelInput = document.getElementById("fieldServiceLabel");
+
+  var ALLOWED_SERVICES = {
+    dashboard_kpi: true,
+    automatizacion: true,
+    software_medida: true,
+    sistemas_web: true,
+    sitio_catalogo: true,
+    consultoria_capacitacion: true,
+    otro: true
+  };
 
   var SERVICE_LABELS = {
     dashboard_kpi: "Dashboards y KPI",
@@ -591,14 +600,6 @@
     servicio: { input: document.getElementById("fieldService"), error: document.getElementById("errService") },
     mensaje: { input: document.getElementById("fieldMessage"), error: document.getElementById("errMessage") }
   };
-
-  function syncServiceLabel() {
-    if (!serviceLabelInput || !fields.servicio.input) return;
-    var key = fields.servicio.input.value;
-    serviceLabelInput.value = Object.prototype.hasOwnProperty.call(SERVICE_LABELS, key)
-      ? SERVICE_LABELS[key]
-      : "";
-  }
 
   function setError(key, message) {
     var f = fields[key];
@@ -634,7 +635,7 @@
     }
 
     var serviceValue = fields.servicio.input ? fields.servicio.input.value : "";
-    if (!serviceValue || !Object.prototype.hasOwnProperty.call(SERVICE_LABELS, serviceValue)) {
+    if (!serviceValue || !ALLOWED_SERVICES[serviceValue]) {
       setError("servicio", "Selecciona el tipo de solución que necesitas.");
       valid = false;
     } else {
@@ -681,8 +682,12 @@
     }
 
     var leadTracked = false;
-    syncServiceLabel();
-    var body = new URLSearchParams(new FormData(form)).toString();
+    var formData = new FormData(form);
+    var serviceKey = fields.servicio.input ? fields.servicio.input.value : "";
+    if (Object.prototype.hasOwnProperty.call(SERVICE_LABELS, serviceKey)) {
+      formData.set("service", SERVICE_LABELS[serviceKey]);
+    }
+    var body = new URLSearchParams(formData).toString();
 
     fetch("/", {
       method: "POST",
@@ -710,7 +715,6 @@
           statusEl.className = "form-status is-success";
         }
         form.reset();
-        syncServiceLabel();
         Object.keys(fields).forEach(function (key) { setError(key, ""); });
       })
       .catch(function () {
@@ -725,17 +729,11 @@
       });
   });
 
-  if (fields.servicio.input) {
-    fields.servicio.input.addEventListener("change", syncServiceLabel);
-  }
-
   [fields.nombre, fields.correo, fields.servicio, fields.mensaje].forEach(function (f) {
     if (f && f.input) {
       f.input.addEventListener("blur", validate);
     }
   });
-
-  syncServiceLabel();
 })();
 
 
