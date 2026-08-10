@@ -761,7 +761,7 @@
   var banner = document.getElementById("analyticsConsent");
   var allowBtn = document.getElementById("analyticsConsentAllow");
   var denyBtn = document.getElementById("analyticsConsentDeny");
-  var prefsBtn = document.getElementById("privacyPreferencesBtn");
+  var prefsButtons = document.querySelectorAll("#privacyPreferencesBtn, [data-privacy-preferences]");
 
   function getConsent() {
     try {
@@ -938,11 +938,11 @@
     });
   }
 
-  if (prefsBtn) {
+  prefsButtons.forEach(function (prefsBtn) {
     prefsBtn.addEventListener("click", function () {
       openPreferences();
     });
-  }
+  });
 
   var stored = getConsent();
   if (stored === "granted") {
