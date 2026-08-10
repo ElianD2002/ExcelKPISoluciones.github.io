@@ -1060,6 +1060,114 @@ section {
 
 .footer-legal a:hover { color: var(--text-primary); }
 
+.footer-privacy-btn {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-privacy-btn:hover {
+  color: var(--text-primary);
+}
+
+.footer-privacy-btn:focus-visible {
+  outline: 2px solid var(--brand-secondary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Analytics consent banner — non-modal, non-blocking */
+.analytics-consent {
+  position: fixed;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: var(--space-3);
+  z-index: 600;
+  max-width: 520px;
+  margin-inline: auto;
+  pointer-events: none;
+}
+
+.analytics-consent[hidden] {
+  display: none !important;
+}
+
+.analytics-consent__inner {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: rgba(15, 40, 29, 0.96);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+.analytics-consent__title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.analytics-consent__text {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.analytics-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.analytics-consent__actions .btn {
+  flex: 1 1 auto;
+  min-width: 8.5rem;
+  justify-content: center;
+}
+
+@media (min-width: 641px) {
+  .analytics-consent {
+    left: auto;
+    right: var(--space-3);
+    bottom: var(--space-3);
+    margin-inline: 0;
+  }
+
+  .analytics-consent__inner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .analytics-consent__copy {
+    flex: 1 1 auto;
+  }
+
+  .analytics-consent__actions {
+    flex: 0 0 auto;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .analytics-consent__inner {
+    backdrop-filter: none;
+  }
+}
+
 
 /* ==========================================================================
    Keyframes

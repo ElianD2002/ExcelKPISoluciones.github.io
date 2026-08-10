@@ -417,7 +417,7 @@
     });
   }
 
-  function openLightbox(images, startIndex, title) {
+  function openLightbox(images, startIndex, title, portfolioItem) {
     if (!lightbox || !images.length) return;
     currentGallery = images.slice();
     currentIndex = Math.max(0, Math.min(startIndex || 0, currentGallery.length - 1));
@@ -428,6 +428,17 @@
     document.body.classList.add("lightbox-open");
     updateLightbox();
     if (lightboxClose) lightboxClose.focus();
+
+    if (
+      portfolioItem === "fleet_dashboard" ||
+      portfolioItem === "container_control"
+    ) {
+      if (window.EKSAnalytics && typeof window.EKSAnalytics.trackEvent === "function") {
+        window.EKSAnalytics.trackEvent("portfolio_open", {
+          portfolio_item: portfolioItem
+        });
+      }
+    }
   }
 
   function closeLightbox() {
@@ -464,7 +475,8 @@
       var start = inline ? parseInt(inline.dataset.currentIndex || "0", 10) : 0;
       var heading = card.querySelector(".case-body h3");
       var title = heading ? heading.textContent.trim() : "Galería de proyecto";
-      openLightbox(images, start, title);
+      var portfolioItem = card.getAttribute("data-portfolio-item") || "";
+      openLightbox(images, start, title, portfolioItem);
     }
 
     card.addEventListener("click", function (e) {
@@ -612,14 +624,14 @@
   }
 
   form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
     var honeypot = document.getElementById("fieldHp");
     if (honeypot && honeypot.value) {
-      e.preventDefault();
       return;
     }
 
     if (!validate()) {
-      e.preventDefault();
       if (statusEl) {
         statusEl.textContent = "Revisa los campos marcados antes de enviar.";
         statusEl.className = "form-status is-error";
@@ -627,11 +639,58 @@
       return;
     }
 
+    if (form.dataset.submitting === "true") {
+      return;
+    }
+
+    form.dataset.submitting = "true";
+    var submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
     if (statusEl) {
       statusEl.textContent = "Enviando mensaje…";
       statusEl.className = "form-status";
     }
-    // Formspree handles the real submission (conservado del sitio actual).
+
+    var leadTracked = false;
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("formspree_error");
+        }
+        return response.json().catch(function () { return {}; });
+      })
+      .then(function () {
+        if (!leadTracked) {
+          leadTracked = true;
+          if (window.EKSAnalytics && typeof window.EKSAnalytics.trackEvent === "function") {
+            window.EKSAnalytics.trackEvent("generate_lead", {
+              lead_source: "website_contact_form"
+            });
+          }
+        }
+        if (statusEl) {
+          statusEl.textContent = "Mensaje enviado. Te contactaremos pronto.";
+          statusEl.className = "form-status is-success";
+        }
+        form.reset();
+        Object.keys(fields).forEach(function (key) { setError(key, ""); });
+      })
+      .catch(function () {
+        if (statusEl) {
+          statusEl.textContent = "No pudimos enviar el mensaje. Intenta de nuevo o escribe a contacto.eks.hn@gmail.com.";
+          statusEl.className = "form-status is-error";
+        }
+      })
+      .finally(function () {
+        form.dataset.submitting = "false";
+        if (submitBtn) submitBtn.disabled = false;
+      });
   });
 
   [fields.nombre, fields.correo, fields.mensaje].forEach(function (f) {
@@ -648,5 +707,204 @@
   var yearEl = document.getElementById("footerYear");
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());
+  }
+})();
+
+
+/* --------------------------------------------------------------------------
+   GA4 — Consent Mode básico + eventos (solo tras consentimiento granted)
+   -------------------------------------------------------------------------- */
+(function () {
+  "use strict";
+
+  var GA_MEASUREMENT_ID = "G-WVE35D4NXL";
+  var CONSENT_KEY = "eks_analytics_consent";
+  var gaLoaded = false;
+  var gaLoading = false;
+
+  var banner = document.getElementById("analyticsConsent");
+  var allowBtn = document.getElementById("analyticsConsentAllow");
+  var denyBtn = document.getElementById("analyticsConsentDeny");
+  var prefsBtn = document.getElementById("privacyPreferencesBtn");
+
+  function getConsent() {
+    try {
+      return localStorage.getItem(CONSENT_KEY);
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function setConsent(value) {
+    try {
+      localStorage.setItem(CONSENT_KEY, value);
+    } catch (err) {
+      /* storage blocked — continue without persistence */
+    }
+  }
+
+  function showBanner() {
+    if (!banner) return;
+    banner.hidden = false;
+  }
+
+  function hideBanner() {
+    if (!banner) return;
+    banner.hidden = true;
+  }
+
+  function clearGaCookies() {
+    var cleared = [];
+    var hostname = window.location.hostname;
+    var parts = hostname.split(".");
+    var domains = [""];
+
+    if (hostname && hostname.indexOf(".") !== -1) {
+      domains.push(hostname);
+      if (parts.length >= 2) {
+        domains.push("." + parts.slice(-2).join("."));
+      }
+      domains.push("." + hostname);
+    }
+
+    var cookies = document.cookie ? document.cookie.split(";") : [];
+    cookies.forEach(function (raw) {
+      var name = raw.split("=")[0].trim();
+      if (name !== "_ga" && name.indexOf("_ga_") !== 0) return;
+
+      domains.forEach(function (domain) {
+        var base = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+        if (domain) {
+          document.cookie = base + "; domain=" + domain;
+        } else {
+          document.cookie = base;
+        }
+      });
+      cleared.push(name);
+    });
+
+    return cleared;
+  }
+
+  function applyConsentUpdate(analyticsGranted) {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("consent", "update", {
+      analytics_storage: analyticsGranted ? "granted" : "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied"
+    });
+  }
+
+  function loadGoogleAnalytics() {
+    if (gaLoaded || gaLoading) return;
+    if (getConsent() !== "granted") return;
+
+    gaLoading = true;
+
+    window.dataLayer = window.dataLayer || [];
+    if (typeof window.gtag !== "function") {
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+    }
+
+    window.gtag("js", new Date());
+    window.gtag("consent", "update", {
+      analytics_storage: "granted",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied"
+    });
+    window.gtag("config", GA_MEASUREMENT_ID);
+
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
+    script.onload = function () {
+      gaLoaded = true;
+      gaLoading = false;
+    };
+    script.onerror = function () {
+      gaLoading = false;
+    };
+    document.head.appendChild(script);
+  }
+
+  function trackEvent(name, params) {
+    if (getConsent() !== "granted") return;
+    if (typeof window.gtag !== "function") return;
+    try {
+      window.gtag("event", name, params || {});
+    } catch (err) {
+      /* silent fail */
+    }
+  }
+
+  function grantAnalytics() {
+    setConsent("granted");
+    hideBanner();
+    loadGoogleAnalytics();
+  }
+
+  function denyAnalytics(options) {
+    var opts = options || {};
+    var previous = getConsent();
+    setConsent("denied");
+    hideBanner();
+
+    if (typeof window.gtag === "function") {
+      applyConsentUpdate(false);
+    }
+
+    var cleared = clearGaCookies();
+
+    // Si GA ya estaba cargado en esta sesión, recargar para detener medición futura.
+    if (opts.reloadIfLoaded && (gaLoaded || previous === "granted") && typeof window.gtag === "function") {
+      window.location.reload();
+      return cleared;
+    }
+
+    return cleared;
+  }
+
+  function openPreferences() {
+    showBanner();
+    if (allowBtn) allowBtn.focus();
+  }
+
+  window.EKSAnalytics = {
+    trackEvent: trackEvent,
+    getConsent: getConsent,
+    openPreferences: openPreferences,
+    measurementId: GA_MEASUREMENT_ID
+  };
+
+  if (allowBtn) {
+    allowBtn.addEventListener("click", function () {
+      grantAnalytics();
+    });
+  }
+
+  if (denyBtn) {
+    denyBtn.addEventListener("click", function () {
+      denyAnalytics({ reloadIfLoaded: true });
+    });
+  }
+
+  if (prefsBtn) {
+    prefsBtn.addEventListener("click", function () {
+      openPreferences();
+    });
+  }
+
+  var stored = getConsent();
+  if (stored === "granted") {
+    hideBanner();
+    loadGoogleAnalytics();
+  } else if (stored === "denied") {
+    hideBanner();
+  } else {
+    showBanner();
   }
 })();

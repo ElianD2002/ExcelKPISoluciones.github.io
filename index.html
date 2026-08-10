@@ -311,6 +311,7 @@
       <div class="case-grid reveal">
         <article
           class="case-card case-card--lg"
+          data-portfolio-item="fleet_dashboard"
           data-gallery="imagenes/hero-flota-1440.webp, imagenes/Dashboard de mantenimiento de flota 2.jpg, imagenes/Dashboard de mantenimiento de flota 3.jpg, imagenes/Dashboard de mantenimiento de flota 4.jpg, imagenes/Dashboard de mantenimiento de flota 5.jpg, imagenes/Dashboard de mantenimiento de flota 6.jpg, imagenes/Dashboard de mantenimiento de flota 7.jpg, imagenes/Dashboard de mantenimiento de flota 8.jpg">
           <div class="case-media case-gallery" data-inline-gallery>
             <div class="gallery-stage" tabindex="0" role="button" aria-label="Ampliar galería: Dashboard de mantenimiento de flota">
@@ -341,6 +342,7 @@
 
         <article
           class="case-card"
+          data-portfolio-item="container_control"
           data-gallery="imagenes/Control de contenedores navieros.jpg, imagenes/Control de contenedores navieros 2.jpg, imagenes/Control de contenedores navieros 3.jpg, imagenes/Control de contenedores navieros 4.jpg, imagenes/Control de contenedores navieros 5.jpg, imagenes/Control de contenedores navieros 6.jpg, imagenes/Control de contenedores navieros 7.jpg, imagenes/Control de contenedores navieros 8.jpg">
           <div class="case-media case-gallery" data-inline-gallery>
             <div class="gallery-stage" tabindex="0" role="button" aria-label="Ampliar galería: Control de contenedores navieros">
@@ -584,6 +586,7 @@
     <p>© <span id="footerYear"></span> Excel KPI Soluciones (EKS). Todos los derechos reservados.</p>
     <p class="footer-legal">
       <a href="#">Política de privacidad</a> · <a href="#">Política de uso y propiedad intelectual</a>
+      · <button type="button" class="footer-privacy-btn" id="privacyPreferencesBtn">Preferencias de privacidad</button>
     </p>
     <p class="footer-credit">Diseñado por EKS</p>
   </div>
@@ -601,6 +604,27 @@
       <div class="lightbox-dots" id="lightboxDots" role="tablist" aria-label="Selección de imagen"></div>
       <button type="button" class="lightbox-nav next" id="lightboxNext" aria-label="Imagen siguiente">›</button>
       <span class="lightbox-counter" id="lightboxCounter"></span>
+    </div>
+  </div>
+</div>
+
+<div
+  id="analyticsConsent"
+  class="analytics-consent"
+  role="region"
+  aria-labelledby="analyticsConsentTitle"
+  hidden>
+  <div class="analytics-consent__inner">
+    <div class="analytics-consent__copy">
+      <p class="analytics-consent__title" id="analyticsConsentTitle">Preferencias de analítica</p>
+      <p class="analytics-consent__text">
+        Usamos Google Analytics para comprender cómo se utiliza este sitio y mejorar nuestros servicios.
+        Puedes aceptar o rechazar la medición analítica.
+      </p>
+    </div>
+    <div class="analytics-consent__actions">
+      <button type="button" class="btn btn-ghost btn-sm" id="analyticsConsentDeny">Rechazar</button>
+      <button type="button" class="btn btn-primary btn-sm" id="analyticsConsentAllow">Aceptar analítica</button>
     </div>
   </div>
 </div>
