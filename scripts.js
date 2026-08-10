@@ -809,25 +809,35 @@
       };
     }
 
-    window.gtag("js", new Date());
+    // Consent Mode v2: default denied → update with user choice (ads always denied)
+    window.gtag("consent", "default", {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied"
+    });
     window.gtag("consent", "update", {
       analytics_storage: "granted",
       ad_storage: "denied",
       ad_user_data: "denied",
       ad_personalization: "denied"
     });
+    window.gtag("js", new Date());
     window.gtag("config", GA_MEASUREMENT_ID);
+
+    // Marcar inicializado al encolar config para evitar doble page_view si se reinvoca.
+    gaLoaded = true;
+    gaLoading = false;
+
+    var scriptSrc =
+      "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
+    if (document.querySelector('script[src="' + scriptSrc + '"]')) {
+      return;
+    }
 
     var script = document.createElement("script");
     script.async = true;
-    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
-    script.onload = function () {
-      gaLoaded = true;
-      gaLoading = false;
-    };
-    script.onerror = function () {
-      gaLoading = false;
-    };
+    script.src = scriptSrc;
     document.head.appendChild(script);
   }
 
