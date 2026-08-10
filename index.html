@@ -468,7 +468,25 @@
         <p class="eyebrow">Contacto</p>
         <h2>Hablemos de tu próximo proyecto</h2>
 
-        <ul class="contact-list">
+        <div class="contact-direct">
+          <p class="contact-direct__title">¿Prefieres contacto directo?</p>
+          <div class="contact-direct__actions">
+            <a
+              href="https://wa.me/50497075303"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary contact-direct__btn"
+            >Escribir por WhatsApp</a>
+            <a
+              href="https://calendly.com/eks-soluciones/30min"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-ghost contact-direct__btn"
+            >Agendar una llamada</a>
+          </div>
+        </div>
+
+        <ul class="contact-list contact-list--meta">
           <li>
             <span class="contact-label">Correo</span>
             <a href="mailto:contacto.eks.hn@gmail.com">contacto.eks.hn@gmail.com</a>
@@ -476,14 +494,6 @@
           <li>
             <span class="contact-label">Teléfono</span>
             <a href="tel:+50497075303">+504 9707-5303</a>
-          </li>
-          <li>
-            <span class="contact-label">WhatsApp</span>
-            <a href="https://wa.me/50497075303" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-          </li>
-          <li>
-            <span class="contact-label">Consultoría gratuita</span>
-            <a href="https://calendly.com/eks-soluciones/30min" target="_blank" rel="noopener">Agendar en Calendly</a>
           </li>
         </ul>
 
@@ -496,7 +506,28 @@
         </div>
       </div>
 
-      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/xrbrzver" method="POST" novalidate>
+      <form
+        class="contact-form reveal"
+        id="contactForm"
+        name="contacto-eks"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        novalidate
+      >
+        <input type="hidden" name="form-name" value="contacto-eks">
+        <input
+          type="hidden"
+          name="subject"
+          data-remove-prefix
+          value="Nueva consulta desde Excel KPI Soluciones"
+        >
+
+        <div class="form-intro">
+          <h3 class="form-intro__title">Cuéntanos sobre tu proyecto</h3>
+          <p class="form-intro__text">Déjanos los datos esenciales y te contactaremos para conocer mejor lo que necesitas.</p>
+        </div>
+
         <div class="form-row">
           <label for="fieldName">Nombre</label>
           <input type="text" id="fieldName" name="name" autocomplete="name" required aria-describedby="errName">
@@ -508,22 +539,40 @@
           <span class="form-error" id="errEmail" role="alert"></span>
         </div>
         <div class="form-row">
-          <label for="fieldCompany">Empresa (opcional)</label>
-          <input type="text" id="fieldCompany" name="company" autocomplete="organization">
+          <label for="fieldService">¿Qué necesitas?</label>
+          <select id="fieldService" name="service" required aria-describedby="errService">
+            <option value="" selected disabled>Selecciona una opción</option>
+            <option value="dashboard_kpi">Dashboards y KPI</option>
+            <option value="automatizacion">Automatización de reportes o procesos</option>
+            <option value="software_medida">Software a medida</option>
+            <option value="sistemas_web">Sistemas web empresariales</option>
+            <option value="sitio_catalogo">Sitio web o catálogo digital</option>
+            <option value="consultoria_capacitacion">Consultoría KPI o capacitación</option>
+            <option value="otro">Otro</option>
+          </select>
+          <span class="form-error" id="errService" role="alert"></span>
         </div>
         <div class="form-row">
-          <label for="fieldMessage">Mensaje</label>
-          <textarea id="fieldMessage" name="message" rows="5" required aria-describedby="errMessage"></textarea>
+          <label for="fieldMessage">Cuéntanos brevemente sobre tu proyecto</label>
+          <textarea
+            id="fieldMessage"
+            name="message"
+            rows="5"
+            required
+            aria-describedby="errMessage"
+            placeholder="Ejemplo: necesitamos automatizar nuestros reportes mensuales y centralizar los indicadores del equipo."
+          ></textarea>
           <span class="form-error" id="errMessage" role="alert"></span>
         </div>
-        <!-- honeypot anti-spam, invisible para personas -->
+
         <div class="form-row form-row--hp" aria-hidden="true">
           <label for="fieldHp">No llenar este campo</label>
-          <input type="text" id="fieldHp" name="empresa_web" tabindex="-1" autocomplete="off">
+          <input type="text" id="fieldHp" name="bot-field" tabindex="-1" autocomplete="off">
         </div>
 
-        <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+        <button type="submit" class="btn btn-primary btn-block">Quiero hablar sobre mi proyecto</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <p class="form-privacy-note">Utilizaremos la información proporcionada únicamente para responder a tu consulta.</p>
       </form>
     </div>
   </section>

@@ -573,10 +573,20 @@
   if (!form) return;
 
   var statusEl = document.getElementById("formStatus");
+  var ALLOWED_SERVICES = {
+    dashboard_kpi: true,
+    automatizacion: true,
+    software_medida: true,
+    sistemas_web: true,
+    sitio_catalogo: true,
+    consultoria_capacitacion: true,
+    otro: true
+  };
 
   var fields = {
     nombre: { input: document.getElementById("fieldName"), error: document.getElementById("errName") },
     correo: { input: document.getElementById("fieldEmail"), error: document.getElementById("errEmail") },
+    servicio: { input: document.getElementById("fieldService"), error: document.getElementById("errService") },
     mensaje: { input: document.getElementById("fieldMessage"), error: document.getElementById("errMessage") }
   };
 
@@ -611,6 +621,14 @@
       valid = false;
     } else {
       setError("correo", "");
+    }
+
+    var serviceValue = fields.servicio.input ? fields.servicio.input.value : "";
+    if (!serviceValue || !ALLOWED_SERVICES[serviceValue]) {
+      setError("servicio", "Selecciona el tipo de solución que necesitas.");
+      valid = false;
+    } else {
+      setError("servicio", "");
     }
 
     if (!fields.mensaje.input.value.trim()) {
@@ -648,22 +666,24 @@
     if (submitBtn) submitBtn.disabled = true;
 
     if (statusEl) {
-      statusEl.textContent = "Enviando mensaje…";
+      statusEl.textContent = "Enviando consulta…";
       statusEl.className = "form-status";
     }
 
     var leadTracked = false;
+    var body = new URLSearchParams(new FormData(form)).toString();
 
-    fetch(form.action, {
+    fetch("/", {
       method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" }
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: body
     })
       .then(function (response) {
         if (!response.ok) {
-          throw new Error("formspree_error");
+          throw new Error("netlify_forms_error");
         }
-        return response.json().catch(function () { return {}; });
       })
       .then(function () {
         if (!leadTracked) {
@@ -675,7 +695,7 @@
           }
         }
         if (statusEl) {
-          statusEl.textContent = "Mensaje enviado. Te contactaremos pronto.";
+          statusEl.textContent = "Gracias. Recibimos tu consulta y nos pondremos en contacto contigo.";
           statusEl.className = "form-status is-success";
         }
         form.reset();
@@ -683,7 +703,7 @@
       })
       .catch(function () {
         if (statusEl) {
-          statusEl.textContent = "No pudimos enviar el mensaje. Intenta de nuevo o escribe a contacto.eks.hn@gmail.com.";
+          statusEl.textContent = "No pudimos enviar tu consulta. Puedes intentarlo nuevamente o escribirnos directamente por WhatsApp.";
           statusEl.className = "form-status is-error";
         }
       })
@@ -693,7 +713,7 @@
       });
   });
 
-  [fields.nombre, fields.correo, fields.mensaje].forEach(function (f) {
+  [fields.nombre, fields.correo, fields.servicio, fields.mensaje].forEach(function (f) {
     if (f && f.input) {
       f.input.addEventListener("blur", validate);
     }

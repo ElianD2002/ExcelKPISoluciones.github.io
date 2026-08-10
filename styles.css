@@ -950,6 +950,43 @@ section {
 .contact-label { color: var(--text-on-light-secondary); font-size: 0.9rem; }
 .contact-list a:hover { color: #056B3B; }
 
+.contact-direct {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--border-subtle-light);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--brand-secondary) 8%, var(--surface-light));
+}
+
+.contact-direct__title {
+  margin: 0 0 var(--space-2);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-on-light);
+}
+
+.contact-direct__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.contact-direct__btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  min-height: 44px;
+}
+
+.contact-list--meta {
+  margin-top: var(--space-3);
+}
+
+.contact-list--meta li {
+  padding: 0.55rem 0;
+  font-size: 0.92rem;
+}
+
 .social-row { display: flex; gap: var(--space-2); margin-top: var(--space-3); flex-wrap: wrap; }
 .social-link {
   font-size: 0.85rem;
@@ -964,6 +1001,23 @@ section {
   border: 1px solid var(--border-subtle-light);
   border-radius: var(--radius-lg);
   padding: var(--space-4);
+}
+
+.form-intro {
+  margin-bottom: var(--space-3);
+}
+
+.form-intro__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  color: var(--text-on-light);
+}
+
+.form-intro__text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--text-on-light-secondary);
+  line-height: 1.45;
 }
 
 .form-row { margin-bottom: var(--space-3); display: flex; flex-direction: column; gap: 0.4rem; }
@@ -982,25 +1036,53 @@ section {
 .form-row label { font-size: 0.88rem; font-weight: 600; color: var(--text-on-light); }
 
 .form-row input,
+.form-row select,
 .form-row textarea {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 16px;
   padding: 0.75rem 0.9rem;
   border: 1px solid var(--border-subtle-light);
   border-radius: var(--radius-sm);
   background: var(--background-light);
   color: var(--text-on-light);
   min-height: 44px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.form-row select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-on-light-secondary) 50%),
+    linear-gradient(135deg, var(--text-on-light-secondary) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 12px) calc(50% - 3px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  padding-right: 2.2rem;
+  cursor: pointer;
 }
 
 .form-row textarea { resize: vertical; min-height: 120px; }
 
 .form-row input:focus,
+.form-row select:focus,
 .form-row textarea:focus {
   border-color: var(--brand-primary);
+  outline: none;
+}
+
+.form-row input:focus-visible,
+.form-row select:focus-visible,
+.form-row textarea:focus-visible {
+  outline: 2px solid var(--brand-secondary);
+  outline-offset: 2px;
 }
 
 .form-row.has-error input,
+.form-row.has-error select,
 .form-row.has-error textarea { border-color: #C0392B; }
 
 .form-error {
@@ -1017,6 +1099,13 @@ section {
 
 .form-status.is-success { color: #1E7E45; }
 .form-status.is-error { color: #C0392B; }
+
+.form-privacy-note {
+  margin: var(--space-2) 0 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--text-on-light-secondary);
+}
 
 /* ==========================================================================
    Footer
