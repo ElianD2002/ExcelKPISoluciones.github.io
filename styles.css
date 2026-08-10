@@ -214,7 +214,8 @@ section {
 .case-tech,
 .process-num,
 .values-list li,
-.about-panel-quote,
+.about-brand-card__line,
+.about-brand-card__pills li,
 .gallery-counter,
 .lightbox-counter {
   font-weight: 500;
@@ -1020,23 +1021,140 @@ section {
   color: var(--text-secondary);
 }
 
-.about-panel {
-  aspect-ratio: 1/1;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(155deg, var(--brand-primary), var(--brand-primary-dark));
+.about-visual {
+  width: 100%;
+  max-width: 380px;
+  margin-inline: auto;
+}
+
+.about-brand-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--space-3);
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.25rem, 3.5vw, 2rem);
+  min-height: 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 40, 29, 0.96) 0%,
+      rgba(7, 24, 17, 0.98) 48%,
+      rgba(22, 78, 52, 0.88) 100%
+    );
+  box-shadow:
+    0 22px 48px -28px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
   text-align: center;
-  gap: 0.6rem;
-  padding: var(--space-4);
-  border: 1px solid var(--border-subtle);
 }
 
-.about-panel-label { font-family: var(--font-display); font-size: 2.4rem; font-weight: 700; color: #fff; }
-.about-panel-sub { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-.about-panel-quote { font-family: var(--font-mono); color: var(--brand-secondary); font-size: 0.85rem; margin-top: var(--space-3); }
+.about-brand-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 40%, #000 20%, transparent 78%);
+}
+
+.about-brand-card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 28%;
+  width: min(78%, 260px);
+  height: min(58%, 220px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 168, 89, 0.22) 0%,
+    rgba(0, 168, 89, 0.06) 42%,
+    transparent 70%
+  );
+  filter: blur(10px);
+}
+
+.about-brand-card__logo,
+.about-brand-card__line,
+.about-brand-card__pills {
+  position: relative;
+  z-index: 1;
+}
+
+.about-brand-card__logo {
+  width: 68%;
+  max-width: 240px;
+  height: auto;
+  object-fit: contain;
+}
+
+.about-brand-card__line {
+  margin: 0;
+  max-width: 22ch;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.about-brand-card__pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-brand-card__pills li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.4rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  border-radius: 999px;
+  border: 1px solid rgba(0, 168, 89, 0.28);
+  background: rgba(7, 24, 17, 0.72);
+}
+
+.about-brand-card__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--brand-secondary);
+  box-shadow: 0 0 0 3px rgba(0, 168, 89, 0.16);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-brand-card:hover {
+    border-color: rgba(0, 168, 89, 0.32);
+    box-shadow:
+      0 24px 52px -28px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(0, 168, 89, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+}
 
 /* ==========================================================================
    CTA band
@@ -1809,7 +1927,7 @@ body.lightbox-open {
   .process-flow { grid-template-columns: 1fr; }
 
   .about-grid { grid-template-columns: 1fr; }
-  .about-visual { order: -1; max-width: 220px; margin-inline: auto; }
+  .about-visual { order: -1; max-width: min(100%, 340px); margin-inline: auto; }
 
   .contact-grid { grid-template-columns: minmax(0, 1fr); }
 
@@ -1873,7 +1991,7 @@ body.lightbox-open {
   .why-grid { grid-template-columns: repeat(2, 1fr); }
 
   .about-grid { grid-template-columns: 1fr; }
-  .about-visual { max-width: 320px; margin-inline: auto; order: -1; }
+  .about-visual { max-width: min(100%, 380px); margin-inline: auto; order: -1; }
 
   .contact-grid { grid-template-columns: minmax(0, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
