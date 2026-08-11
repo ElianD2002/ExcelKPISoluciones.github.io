@@ -1399,10 +1399,34 @@ section {
 .footer-col a:hover { color: var(--brand-secondary); }
 
 .social-row--footer a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
   border: 1px solid var(--border-subtle);
-  padding: 0.35rem 0.7rem;
-  font-size: 0.75rem;
   border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  line-height: 0;
+}
+
+.social-row--footer a:hover,
+.social-row--footer a:focus-visible {
+  color: var(--text-primary);
+  border-color: rgba(0, 168, 89, 0.45);
+}
+
+.social-row--footer a:active {
+  color: var(--brand-secondary);
+}
+
+.social-link__icon {
+  display: block;
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
 .footer-bottom {
